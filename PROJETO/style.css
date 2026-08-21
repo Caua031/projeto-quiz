@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+    --cor-principal: #222222;
+}
+
+
+body {
+    background-color: var(--cor-principal)
+}
+
+.perfil-container input{
+    height: 3em;
+    width: 17.1rem;
+}

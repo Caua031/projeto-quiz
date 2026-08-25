@@ -1,3 +1,75 @@
+<<<<<<< HEAD
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+    --cor-principal: #FFFFFF;
+    --cor-branco-pastel: #faf7f1;
+    --cor-buttons-perguntas: #AEDFF2;
+    --cor-buttons-next: #3F6E7A;
+    --cor-fundo-bege: #EFE4D2;
+    --cor-texto-branco: #FFFFFF;
+    --fonte-principal: 'Roboto', sans-serif;
+    --font-secundaria: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-color: var(--cor-principal);
+}
+
+.app {
+    margin: 10em;
+    text-align: center;
+}
+
+.quiz h2{
+    font-family: var(--fonte-principal);
+    font-size: 18px;
+}
+
+.answer-btn{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.answer-btn .btn{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding-left: 9px;
+}
+
+.answer-btn img{
+    width: 40px;
+    height: auto;
+}
+
+.btn {
+    width: auto;
+    height: 70px;
+    border-radius: 10px;
+    font-family: var(--font-secundaria);
+}
+
+.btn:hover{
+    background-color: var(--cor-buttons-perguntas);
+}
+
+.btn-next {
+    font-family: var(--font-secundaria);
+    width: 20em;
+    height: 45px;
+    margin-top: 30px;
+    border-radius: 12px;
+    color: var(--cor-texto-branco);
+    background-color: var(--cor-buttons-next);
+    text-transform: uppercase;
+=======
 * {
   margin: 0;
   padding: 0;
@@ -16,4 +88,5 @@ body {
 .perfil-container input{
     height: 3em;
     width: 17.1rem;
+>>>>>>> 003234c24d44bc55d288a6983169adc7b3925de9
 }

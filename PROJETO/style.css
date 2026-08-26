@@ -24,12 +24,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
+    padding: 20px;
 }
 
 .app {
-    margin: 10em;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
     text-align: center;
+    margin-top: 30px;
 }
 
 .score {
@@ -67,19 +71,10 @@ body {
     background-color: #3F6E7A;
 }
 
-.progress {
+.quiz {
     width: 100%;
-    height: 10px;
-    background-color: var(--cor-fundo-bege);
-    border-radius:5px;
+    max-width: 700px;
 }
-
-.barra{
-    height: 100%;
-    width: 30%;
-    background-color: var(--cor-buttons-next);
-}
-
 
 .quiz h2{
     font-family: var(--fonte-principal);
@@ -122,7 +117,7 @@ body {
     height: 200px;
     background-color: var(--cor-fundo-azul-escuro);
     border-radius: 10px;
-    /*display: none;*/ 
+    display: none;
 }
 
 .container h1 {

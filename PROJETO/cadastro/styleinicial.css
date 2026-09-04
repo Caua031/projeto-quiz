@@ -1,0 +1,58 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+    --cor-principal: #FFFFFF;
+    --cor-branco-pastel: #faf7f1;
+    --cor-buttons-perguntas: #AEDFF2;
+    --cor-buttons-next: #3F6E7A;
+    --cor-fundo-bege: #EFE4D2;
+    --cor-fundo-azul-escuro: #8fb9d6;
+    --cor-texto-branco: #FFFFFF;
+    --fonte-principal: 'Roboto', sans-serif;
+    --font-secundaria: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+/* PARTE DE CADASTRO */
+.cadastro {
+    width: 100vh;
+    height: auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cadastro img{
+    width: 150px;
+    height: 150px;
+    background-color: antiquewhite;
+    border-radius: 5rem;
+}
+
+.cadastro h1 {
+    font-family: var(--fonte-principal);
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.cadastro input{
+    width: 25em;
+    height: 30px;
+    font-family: var(--font-secundaria);
+    margin-top: 20px;
+    background-color: var(--cor-fundo-azul-escuro);
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-proximo{
+    width: 20rem;
+    height: 30px;
+    border-radius: 15px;
+    
+}

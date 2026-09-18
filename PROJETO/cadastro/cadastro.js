@@ -5,8 +5,7 @@ const janelaAvatares = document.getElementById('janela-avatares');
 const fotoAtual = document.getElementById('foto-atual');
 const opcoesAvatar = document.querySelectorAll('.opcao-avatar');
 const formRegistro = document.getElementById('form-registro');
-const botaoContinuar = document.getElementById('next-btn');
-
+const botaoContinuar = document.getElementById('proximo-btn');
 
 // Abre a janela de opções
 btnAbrir.addEventListener('click', () => {
@@ -26,7 +25,6 @@ opcoesAvatar.forEach(opcao => {
     });
 });
 
-
 formRegistro.addEventListener('submit', function(evento) {
     evento.preventDefault(); // Impede a página de mudar correndo
 
@@ -37,6 +35,6 @@ formRegistro.addEventListener('submit', function(evento) {
 
     // Aguarda 2000 milissegundos (2 segundos) antes de mudar de página
     setTimeout(() => {
-        window.location.href = "/index.html";
+        window.location.href = "../index.html";
     }, 2000); 
 });

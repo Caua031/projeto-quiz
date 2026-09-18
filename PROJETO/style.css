@@ -246,6 +246,21 @@ body {
     background-color: var(--cor-buttons-perguntas);
 }
 
+.btn.correct {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn.incorrect {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
 .container {
     width: auto;
     height: 200px;
@@ -255,6 +270,18 @@ body {
     background-color: #0000002c;
     text-transform: uppercase;
     display: none;
+}
+
+.container.correct {
+    background-color: #28a746;
+    border: 1px solid #000000;
+    color: white;
+}
+
+.container.incorrect {
+    background-color: #dc3545;
+    border: 1px solid #000000;
+    color: white;
 }
 
 .container h1 {

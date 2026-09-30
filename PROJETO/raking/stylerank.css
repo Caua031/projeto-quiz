@@ -1,0 +1,105 @@
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   PÁGINA
+========================= */
+body {
+    background-color: bisque;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================
+   CABEÇALHO
+========================= */
+.cabecalho {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cabecalho button {
+    position: absolute;
+    left: 20px;
+    width: 80px;
+    height: 50px;
+    background-color: aliceblue;
+    border: 2px solid #000;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.cabecalho h1 {
+    padding: 10px 90px;
+    background-color: aliceblue;
+    border: 2px solid #000;
+    border-radius: 20px;
+}
+
+/* =========================
+   RANKING
+========================= */
+.raking-jogadores {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.class-jogadores {
+    display: flex;
+    align-items: center;
+    padding: 120px 10vw;
+    background-color: rgba(0, 0, 0, 0.39);
+    border: 2px solid #000;
+    border-radius: 20px;
+    gap: 10rem;
+    list-style: none;
+    color: #FFFFFF;
+}
+
+.barra-ranking {
+    width: 150px;
+    height: 200px;
+    background-color: rgb(0, 136, 255);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.barra-1 {
+    height: 220px;
+}
+
+.barra-2 {
+    height: 300px;
+}
+
+.barra-3 {
+    height: 150px;
+}
+/* =========================
+   JOGADOR
+========================= */
+.list-jogador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.list-jogador img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}

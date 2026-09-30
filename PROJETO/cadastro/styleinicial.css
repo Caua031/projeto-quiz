@@ -20,8 +20,8 @@
 
 /* PARTE DE CADASTRO */
 body {
-    /* background: linear-gradient(135deg, #031631 60%, #222d3f, #13163a);*/
-    background: url(../imagens/fundoga.jpg) center/ cover no-repeat;
+    background: linear-gradient(135deg, #031631 60%, #222d3f, #13163a);
+    /*background: url(../imagens/fundoga.jpg) center/ cover no-repeat;*/
     min-height: 100vh;
     background-attachment: fixed;
     display: flex;

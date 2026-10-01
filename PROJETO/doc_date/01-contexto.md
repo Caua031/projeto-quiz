@@ -1,7 +1,6 @@
 # Passos 1 a 3 — Contexto, minimundo e requisitos
 
 **Marco:** M1  
-**Arquivo de entrega:** `entregas/01-contexto.md`
 
 ---
 

@@ -111,6 +111,7 @@ const feedbackSubtitle = document.querySelector(".container h2");
 const headerTitle = document.querySelector(".perfil h1");
 const scoreElement = document.querySelector(".pontos");
 const progressContainer = document.getElementById("progress");
+const botaoRaking = document.getElementById("raking-jogador");
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -120,6 +121,7 @@ function startQuiz() {
     score = 0;
     nextButton.innerHTML = "Próximo";
     nextButton.style.display = "none";
+    botaoRaking.style.display = "none";
     
     // Cria as barrinhas de progresso com base no tamanho real do array 'quiz'
     createProgressBars();
@@ -241,6 +243,8 @@ function showScore() {
     
     nextButton.innerHTML = "Jogar Novamente";
     nextButton.style.display = "inline-block";
+    botaoRaking.innerHTML = "Raking Global";
+    botaoRaking.style.display = "inline-block";
 }
 
 function handleNextButton() {
@@ -259,6 +263,19 @@ nextButton.addEventListener("click", () => {
         startQuiz();
     }
 });
+
+botaoRaking.addEventListener("click", function(evento){
+    evento.preventDefault();
+
+    botaoRaking.innerText = "Proximo...";
+    botaoRaking.style.opacity = "0.7";
+    botaoRaking.style.cursor = "not_allowed";
+
+    setTimeout(() => {
+        window.location.href = "./raking/raking.html";
+    }, 2000);
+});
+
 
 startQuiz();
 
@@ -279,4 +296,5 @@ static();
 $('body').click(function onOff(){
     $('#dot').toggleClass('active');
 });
+
 

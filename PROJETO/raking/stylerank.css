@@ -13,6 +13,9 @@
 body {
     background-color: bisque;
     font-family: Arial, sans-serif;
+    color: #252525;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 /* =========================
@@ -23,83 +26,189 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-bottom: 35px;
 }
 
 .cabecalho button {
     position: absolute;
-    left: 20px;
-    width: 80px;
-    height: 50px;
-    background-color: aliceblue;
-    border: 2px solid #000;
-    border-radius: 15px;
+    left: 0;
+    width: 85px;
+    height: 45px;
+    background-color: #fff;
+    border: 2px solid #252525;
+    border-radius: 12px;
+    font-weight: bold;
     cursor: pointer;
+    transition: 0.2s;
+}
+
+.cabecalho button:hover {
+    background-color: #252525;
+    color: #fff;
 }
 
 .cabecalho h1 {
-    padding: 10px 90px;
-    background-color: aliceblue;
-    border: 2px solid #000;
-    border-radius: 20px;
+    padding: 12px 60px;
+    background-color: #fff;
+    border: 2px solid #252525;
+    border-radius: 15px;
+    font-size: 25px;
+    letter-spacing: 2px;
 }
 
 /* =========================
-   RANKING
+   PÓDIO
 ========================= */
 .raking-jogadores {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .class-jogadores {
+    width: min(100%, 900px);
     display: flex;
-    align-items: center;
-    padding: 120px 10vw;
-    background-color: rgba(0, 0, 0, 0.39);
-    border: 2px solid #000;
-    border-radius: 20px;
-    gap: 10rem;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 45px;
+    padding: 35px 30px 0;
     list-style: none;
-    color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
-.barra-ranking {
-    width: 150px;
-    height: 200px;
-    background-color: rgb(0, 136, 255);
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.barra-1 {
-    height: 220px;
-}
-
-.barra-2 {
-    height: 300px;
-}
-
-.barra-3 {
-    height: 150px;
-}
 /* =========================
-   JOGADOR
+   JOGADORES DO PÓDIO
 ========================= */
 .list-jogador {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    width: 150px;
+    text-align: center;
 }
 
 .list-jogador img {
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.list-jogador h1 {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* =========================
+   BARRAS
+========================= */
+.barra-ranking {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 8px;
+    color: #fff;
+    border-radius: 15px 15px 0 0;
+    box-shadow: inset 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+.barra-ranking h2 {
+    font-size: 32px;
+}
+
+.barra-ranking h3 {
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+/* Segundo lugar */
+.barra-1 {
+    height: 190px;
+    background: linear-gradient(180deg, #b7c3d0, #78899b);
+}
+
+/* Primeiro lugar */
+.barra-2 {
+    height: 260px;
+    background: linear-gradient(180deg, #ffdf68, #e9a900);
+}
+
+/* Terceiro lugar */
+.barra-3 {
+    height: 145px;
+    background: linear-gradient(180deg, #d99a72, #a65e35);
+}
+
+/* =========================
+   LISTA DE RANKING
+========================= */
+.container {
+    width: min(100%, 900px);
+    margin: 35px auto;
+}
+
+.list-raking {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+}
+
+/* =========================
+   CARTÕES DOS JOGADORES
+========================= */
+.raking {
+    display: grid;
+    grid-template-columns: 55px 55px minmax(0, 1fr) 120px;
+    align-items: center;
+    gap: 18px;
+    min-height: 85px;
+    padding: 12px 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.raking:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Posição */
+.raking h1 {
+    font-size: 22px;
+    text-align: center;
+    color: #555;
+}
+
+/* Avatar */
+.raking img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e7d7bd;
+}
+
+/* Nome */
+.raking h2 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+/* Pontuação */
+.raking h3 {
+    font-size: 15px;
+    text-align: right;
+    color: #777;
+    white-space: nowrap;
 }

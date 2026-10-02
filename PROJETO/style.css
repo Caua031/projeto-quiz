@@ -295,7 +295,7 @@ body {
     font-size: 15px;
 }
 
-#next-btn {
+.buttons {
     font-family: var(--font-secundaria);
     width: 20em;
     height: 45px;
@@ -306,7 +306,7 @@ body {
     border: 1px solid #000000;
 }
 
-#next-btn:hover {
+.buttons:hover {
     color: #000000;
     background-color: var(--cor-fundo-azul-escuro);
 }

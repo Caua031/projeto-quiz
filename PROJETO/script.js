@@ -108,10 +108,32 @@ const nextButton = document.getElementById("next-btn");
 const feedbackContainer = document.querySelector(".container");
 const feedbackTitle = document.querySelector(".container h1");
 const feedbackSubtitle = document.querySelector(".container h2");
-const headerTitle = document.querySelector(".perfil h1");
+const headerTitle = document.querySelector(".quiz h1");
 const scoreElement = document.querySelector(".pontos");
 const progressContainer = document.getElementById("progress");
 const botaoRaking = document.getElementById("raking-jogador");
+
+// === NOVA PARTE: CARREGAR PERFIL DO JOGADOR NO QUIZ ===
+function carregarPerfilJogador() {
+    const dadosSalvos = localStorage.getItem('jogadorAtual');
+    
+    if (dadosSalvos) {
+        const jogador = JSON.parse(dadosSalvos);
+
+        const fotoPerfilQuiz = document.querySelector(".perfil img"); 
+        const nomePerfilQuiz = document.querySelector(".perfil h1"); 
+
+        if (fotoPerfilQuiz) {
+            fotoPerfilQuiz.src = jogador.foto;
+        }
+        if (nomePerfilQuiz) {
+            nomePerfilQuiz.innerText = jogador.nome;
+        }
+    }
+}
+
+carregarPerfilJogador();
+// ======================================================
 
 let currentQuestionIndex = 0;
 let score = 0;

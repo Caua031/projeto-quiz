@@ -28,6 +28,18 @@ opcoesAvatar.forEach(opcao => {
 formRegistro.addEventListener('submit', function(evento) {
     evento.preventDefault(); // Impede a página de mudar correndo
 
+    // === NOVA PARTE: SALVAR NO LOCALSTORAGE ===
+    const inputNome = document.getElementById('nome-jogador') || document.querySelector('#form-registro input[type="text"]'); 
+    
+    const dadosJogador = {
+        nome: inputNome ? inputNome.value : "Jogador Anonimo",
+        foto: fotoAtual.src
+    };
+
+    // Salva o jogador atual como uma string JSON
+    localStorage.setItem('jogadorAtual', JSON.stringify(dadosJogador));
+    // ==========================================
+
     // Muda o estilo do botão para dar feedback visual de carregamento
     botaoContinuar.innerText = "Carregando...";
     botaoContinuar.style.opacity = "0.7";

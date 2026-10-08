@@ -91,5 +91,3 @@ Esta seção reúne as regras de negócio, os requisitos funcionais e os requisi
 - **Regra de negócio:** estabelece uma condição ou regra que os dados e as operações do sistema devem respeitar.
 
 ---
-
-**Fim do documento — Marco M1**

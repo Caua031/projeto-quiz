@@ -38,9 +38,9 @@ Os usuários do sistema e suas respectivas atividades são:
 
 ## 2. Minimundo
 
-Somos um grupo e queremos desenvolver um sistema de quiz sobre cibersegurança para ajudar estudantes a aprender sobre segurança digital. O sistema apresentará afirmações relacionadas a temas como Segurança de Redes, Phishing, Malware e Proteção de Dados. O jogador deverá indicar se cada afirmação está certa ou errada e, após responder, poderá consultar uma explicação e a fonte utilizada.
+O QUIZ que nosso grupo criará é um sistema voltado ao aprendizado de Cibe segurança e curiosidades da área de tecnologia, seu desenvolvimento é baseado a auxiliar e incentivar a compressão do estudante de conceitos à segurança digital. O sistema apresenta questões nas quais o jogador deve indicar se à afirmação está Certa ou Errada. Cada questão tem um código, titulo, enunciado, explicação únicos, há categoria e nível de dificuldade, também há alternativas identificadas por letras, sendo somente uma Certa.
 
-Cada questão possui um código único, um título, um enunciado e uma explicação sobre a resposta correta. Ela pertence a uma categoria e possui um nível de dificuldade — fácil, médio ou difícil. Cada questão também possui alternativas, sendo exatamente uma delas a correta, e está associada a uma referência bibliográfica. Uma referência pode ser utilizada por várias questões, mas sua URL deve ser única. As questões podem ter palavras-chave para facilitar as pesquisas. O sistema também armazena informações de jogadores e suas pontuações para montar o ranking. Embora inicialmente o quiz utilize as opções Certo e Errado, a estrutura deve permitir que uma questão tenha mais de duas alternativas no futuro.
+Cada questão está linkada com a respectiva referencia bibliográfica, que pode ser usada em mais questões, mas cada URL única. As questões possuem palavras-chaves, podendo ser utilizadas para facilitar a pesquisa. O sistema identifica cada jogador por nome, sua pontuação e guarda o ranking após a finalização do QUIZ. O usuário, responsável pelo cadastro de questões, pode alterar e excluir perguntas e relacionadas, diferente do jogador que somente responde as questões, vÊ explicação e fontes, e acompanha sua pontuação e ranking final. 
 
 ---
 

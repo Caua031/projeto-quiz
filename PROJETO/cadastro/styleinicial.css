@@ -8,20 +8,16 @@
 /* VARIAVEIS */
 :root{
     --cor-principal: #FFFFFF;
-    --cor-branco-pastel: #faf7f1;
-    --cor-buttons-perguntas: #AEDFF2;
     --cor-buttons-next: #3F6E7A;
     --cor-fundo-bege: #EFE4D2;
-    --cor-fundo-azul-escuro: #8fb9d6;
-    --cor-texto-branco: #FFFFFF;
+    --cor-texto-branco: #ffffff;
     --fonte-principal: 'Roboto', sans-serif;
     --font-secundaria: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* PARTE DE CADASTRO */
 body {
-    background: linear-gradient(135deg, #031631 60%, #222d3f, #13163a);
-    /*background: url(../imagens/fundoga.jpg) center/ cover no-repeat;*/
+    background: url(../imagens/fundoinicio.jpg) center/ cover no-repeat;
     min-height: 100vh;
     background-attachment: fixed;
     display: flex;
@@ -34,10 +30,10 @@ body {
     height: auto;
     text-align: center;
     margin: 0;
-    background-color: var(--cor-branco-pastel);
+    background-color: rgba(75, 75, 75, 0.993);
     padding: 40px 30px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgb(0, 0, 0);
     z-index: 1;
 }
 
@@ -46,6 +42,7 @@ body {
     font-size: 25px;
     text-transform: uppercase;
     margin-top: 40px;
+    color: var(--cor-texto-branco);
 }
 
 .cadastro input{
@@ -53,7 +50,7 @@ body {
     height: 35px;
     font-family: var(--font-secundaria);
     margin-top: 20px;
-    background-color: var(--cor-fundo-azul-escuro);
+    background-color: var(--cor-principal);
     border-radius: 10px;
     text-align: center;
     font-size: 20px;
@@ -96,7 +93,7 @@ body {
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid #000;
-    background-color: var(--cor-fundo-bege);
+    background-color: var(--cor-principal);
 }
 
 .overlay-trocar {

@@ -26,6 +26,12 @@ opcoesAvatar.forEach(opcao => {
 });
 
 formRegistro.addEventListener('submit', function(evento) {
+
+    if (fotoAtual.src.includes("perfil.png")) {
+        alert("É necessário usar uma foto de perfil");
+        return;
+    }
+    
     evento.preventDefault(); // Impede a página de mudar correndo
 
     // === NOVA PARTE: SALVAR NO LOCALSTORAGE ===

@@ -1,6 +1,6 @@
 # Passos 5 e 6 — Modelo lógico, normalização e dicionário
 
-Marco M2. A entrega do passo 5 é o modelo lógico: o desenho em `entregas/03-logico.pdf` (ou `.png`) e este texto em `entregas/03-logico.md`.
+Marco M2
 
 O desenho parte do modelo conceitual e mostra tabelas, colunas, chave primária e chaves estrangeiras. Não é outro DER. Pode ser feito no brModelo (modelo lógico) ou no Visual Paradigm Online. Se a normalização achar violação, corrijam o desenho e o texto.
 
@@ -20,7 +20,6 @@ O desenho parte do modelo conceitual e mostra tabelas, colunas, chave primária 
 | QUIZ gera PONTUAÇÃO | 1:N | FK no lado N | `PONTUACAO.quiz_identificador` referencia `QUIZ.identificador`; não é `UNIQUE`, pois o modelo conceitual admite várias pontuações por quiz. |
 | JOGADOR realiza QUIZ | 1:N | FK no lado N | `QUIZ.jogador_id` referencia `JOGADOR.id`. |
 
-N:N vira tabela associativa. 1:N vira chave estrangeira no lado N.
 
 ### Normalização
 
@@ -48,13 +47,7 @@ Dependências no formato `determinante → dependente`, com o requisito que sust
 | 2FN | Nas tabelas com chave simples, os atributos dependem da chave inteira. Nas tabelas associativas, a chave é composta e não existem atributos não-chave que dependam apenas de uma parte dela. | Todas; especialmente `PERGUNTA_PALAVRA_CHAVE` e `QUIZ_PERGUNTA`. |
 | 3FN | Categoria, dificuldade, publicador, idioma e palavra-chave ficam em tabelas próprias. A ligação entre jogador e pontuação é obtida por `QUIZ`, evitando repetir `jogador_id` em `PONTUACAO` e mantendo os dados do jogador em um único lugar. | `CATEGORIA`, `DIFICULDADE`, `PUBLICADOR`, `IDIOMA`, `PALAVRA_CHAVE`, `PERGUNTA`, `FONTE`, `QUIZ` e `PONTUACAO`. |
 
-Se alguma forma falhar: o que mudou neste dicionário.
-
-A estrutura de palavras-chave e perguntas do quiz atende à 1FN e à 2FN. Para evitar redundância e manter a 3FN, a ligação direta `JOGADOR — registra — PONTUAÇÃO` descrita no modelo 02 é representada no modelo lógico pelo caminho `JOGADOR — realiza — QUIZ — gera — PONTUAÇÃO`; por isso, `PONTUACAO` não repete `jogador_id`, que já fica registrado em `QUIZ`. A regra RD05, que exige exatamente uma alternativa correta por pergunta, deve ser validada considerando todas as alternativas da pergunta; um `CHECK` aplicado somente a uma linha não garante essa regra.
-
 ## 6. Dicionário de dados
-
-Repitam o bloco para cada tabela. A descrição diz o que a coluna guarda, em uma linha.
 
 ### Tabela: CATEGORIA
 

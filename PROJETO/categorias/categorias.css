@@ -22,7 +22,7 @@
 body {
   min-height: 100vh;
   padding-block: 50px;
-  background-color: rgba(41, 41, 41, 0.76);
+  background-color: rgba(0, 0, 0, 0.76);
   display: grid;
   grid-template-columns:1fr min(var(--largura-max), 100% - 2 * var(--margem-lateral)) 1fr;
   align-content: start;
@@ -171,4 +171,52 @@ body > * {
 
 .btn-3{
     background-color: #9C070A86;
+}
+
+
+/* =========================
+   BACKGROUND CANVAS
+========================= */
+
+html {
+    min-height: 100%;
+    background-color: #080f1c;
+}
+
+#background {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* animacao fundo */
+body > *:not(#background) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .lista-categorias {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .lista-categorias {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Respeita a preferência por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    #background {
+        opacity: 0.65;
+    }
 }

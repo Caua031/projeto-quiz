@@ -26,7 +26,7 @@ Marco M1. A entrega deste passo é o modelo conceitual: o desenho em `entregas/0
 Uma frase por linha, ligada a um requisito. Cardinalidade dos dois lados, mínimo e máximo.
 
 | Relacionamento | Cardinalidade | Justificativa | Requisito |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | CATEGORIA — possui — PERGUNTA | CATEGORIA (0,N); PERGUNTA (1,1) | Uma categoria pode agrupar nenhuma ou várias perguntas; cada pergunta pertence a exatamente uma categoria. | --- |
 | PERGUNTA — possui — ALTERNATIVA | PERGUNTA (1,N); ALTERNATIVA (1,1) | Uma pergunta possui alternativas; cada alternativa pertence a uma única pergunta. O mínimo de duas alternativas é compatível com as opções Certo/Errado e permite mais opções futuramente. | --- |
 | PERGUNTA — utiliza — FONTE | PERGUNTA (1,1); FONTE (0,N) | Cada pergunta possui uma única referência; uma fonte pode ser usada por várias perguntas | --- |

@@ -27,12 +27,11 @@ Uma frase por linha, ligada a um requisito. Cardinalidade dos dois lados, mínim
 
 | Relacionamento | Cardinalidade | Justificativa | Requisito |
 | --- | --- | --- | --- |
-| CATEGORIA — possui — PERGUNTA | CATEGORIA (1,N); PERGUNTA (1,1) | Uma categoria pode agrupar nenhuma ou várias perguntas; cada pergunta pertence a exatamente uma categoria. | --- |
-| PERGUNTA — possui — ALTERNATIVA | PERGUNTA (1,N); ALTERNATIVA (1,1) | Uma pergunta possui alternativas; cada alternativa pertence a uma única pergunta. O mínimo de duas alternativas é compatível com as opções Certo/Errado e permite mais opções futuramente. | --- |
-| PERGUNTA — utiliza — FONTE | PERGUNTA (1,1); FONTE (0,N) | Cada pergunta possui uma única referência; uma fonte pode ser usada por várias perguntas | --- |
-| PUBLICADOR — publica — FONTE | PUBLICADOR (1,1); FONTE (1,1) | Um publicador pode publicar várias fontes; cada fonte está associada a um publicador. | --- |
+| CATEGORIA — possui — PERGUNTA | CATEGORIA (1,N); PERGUNTA (1,1) | Uma categoria pode agrupar várias perguntas; cada pergunta pertence a exatamente uma categoria. | --- |
+| PERGUNTA — possui — ALTERNATIVA | PERGUNTA (4,N); ALTERNATIVA (1,1) | Uma pergunta possui alternativas; cada alternativa pertence a uma única pergunta. O mínimo de 4 alternativas é compatível com as opções Certo/Errado/Errado/Errado e permite mais opções futuramente. | --- |
+| PERGUNTA — utiliza — FONTE | PERGUNTA (1,1); FONTE (0,N) | Cada pergunta poss  ui uma única referência; uma fonte pode ser usada por várias perguntas | --- |
+| PUBLICADOR — publica — FONTE | PUBLICADOR (0,N); FONTE (1,1) | Um publicador pode publicar várias fontes; cada fonte está associada a um publicador. | --- |
 | IDIOMA — identifica — FONTE | IDIOMA (1,N); FONTE (1,1) | Um idioma pode estar associado a várias fontes; cada fonte possui um idioma registrado. | --- |
-| PERGUNTA — possui — PALAVRA-CHAVE | PERGUNTA (1,N); PALAVRA-CHAVE (1,N) | Uma pergunta pode não ter palavras-chave ou ter várias; uma palavra-chave pode estar associada a várias perguntas e é cadastrada uma única vez. | --- |
 | JOGADOR — registra — PONTUAÇÃO | JOGADOR (0,N); PONTUAÇÃO (1,1) | Um jogador pode acumular várias pontuações; cada registro de pontuação pertence a um jogador. | --- |
 | QUIZ — contém — PERGUNTA | QUIZ (1,N); PERGUNTA (1,N) | Um quiz apresenta uma ou várias perguntas; uma pergunta pode participar de vários quizzes. | --- |
 | QUIZ — gera — PONTUAÇÃO | QUIZ (0,N); PONTUAÇÃO (1,1) | Um quiz pode gerar várias pontuações; cada pontuação está associada a uma realização de quiz. | --- |
@@ -41,7 +40,7 @@ Uma frase por linha, ligada a um requisito. Cardinalidade dos dois lados, mínim
 
 
 O diagrama e esta tabela descrevem o mesmo modelo. Toda entidade do desenho está na tabela.
-<img width="2200" height="1700" alt="modelo logico DER01" src="https://github.com/user-attachments/assets/c1f2d2ea-128a-4b92-8234-fd19494f88b7" />
+<img width="2200" height="1700" alt="modelo logico DERFinal" src="https://github.com/user-attachments/assets/84bafe7e-5161-4459-af0d-6e3be5e9e400" />
 
 
 

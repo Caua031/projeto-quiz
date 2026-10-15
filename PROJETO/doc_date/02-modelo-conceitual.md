@@ -36,3 +36,5 @@ Uma frase por linha, ligada a um requisito. Cardinalidade dos dois lados, mínim
 | | | | RD__ |
 
 O diagrama e esta tabela descrevem o mesmo modelo. Toda entidade do desenho está na tabela.
+<img width="2200" height="1700" alt="DER" src="https://github.com/user-attachments/assets/a5bdfa8d-0115-4c94-b780-4936a3787e28" />
+

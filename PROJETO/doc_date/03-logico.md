@@ -7,6 +7,17 @@ O desenho parte do modelo conceitual e mostra tabelas, colunas, chave primária 
 ## 5. Modelo lógico
 
 | Relacionamento no DER | Cardinalidade | Vira | Onde fica a FK ou a tabela associativa |
+| CATEGORIA |  | --- | --- |
+| --- | --- | --- | --- |
+| --- | --- | --- | --- |
+| --- | --- | --- | --- |
+| --- | --- | --- | --- |
+| --- | --- | --- | --- |
+| --- | --- | --- | --- |
+| --- | --- | --- | --- |
+| --- | --- | --- | --- |
+| --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | --- | --- | --- | --- |
 | | 1:N / N:N / 1:1 | FK no lado N / tabela associativa | |
 
@@ -18,10 +29,37 @@ Dependências no formato `determinante → dependente`, com o requisito que sust
 
 | ID | Dependência | Requisito |
 | --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+
 | DF1 | | |
 
 | Forma | Por que o esquema atende | Tabela em que isso aparece |
 | --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
+
 | 1FN | Valores atômicos; grupo multivalorado separado | |
 | 2FN | Sem dependência parcial de chave composta. Se não houver chave composta, digam por quê | |
 | 3FN | Sem dependência transitiva. O que não é chave e determina outro atributo está em tabela própria | |

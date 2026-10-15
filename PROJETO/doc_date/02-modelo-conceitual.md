@@ -9,13 +9,13 @@ Marco M1. A entrega deste passo é o modelo conceitual: o desenho em `entregas/0
 | Entidade | Atributos | Identificador |
 | CATEGORIA | código, nome | código |
 | PERGUNTA | código, título, enunciado, explicação | código |
-| ALTERNATIVA | letra, texto, correta (sim/não) | letra, identificada no contexto de uma pergunta |
+| ALTERNATIVA | id, letra, texto, correta (sim/não) | id |
 | FONTE | URL, título | URL |
-| PUBLICADOR | identificador, nome | identificador |
+| PUBLICADOR | id, nome | id |
 | IDIOMA | código, descrição | código |
-| JOGADOR | identificador, nome | identificador |
+| JOGADOR | id, nome | id |
 | QUIZ | identificador | identificador |
-| PONTUAÇÃO | identificador, pontos | identificador |
+| PONTUAÇÃO | id, pontos | id |
 | DIFICULDADE | código, descrição (fácil, médio ou difícil) | código |
 | PALAVRA-CHAVE | id, termo | id |
 | | | |
@@ -36,9 +36,9 @@ Uma frase por linha, ligada a um requisito. Cardinalidade dos dois lados, mínim
 | QUIZ — gera — PONTUAÇÃO | QUIZ (0,N); PONTUAÇÃO (1,1) | Um quiz pode gerar várias pontuações; cada pontuação está associada a uma realização de quiz. | --- |
 | DIFICULDADE - contém - PERGUNTA | DIFICULDADE (0,N) ;PERGUNTA (1,1) | Um nível pode classificar várias perguntas, enquanto cada pergunta pertence a exatamente um nível. | --- |
 | JOGADOR - realiza - QUIZ |JOGADOR (0,N); QUIZ (1,1)| um jogador pode realizar várias tentativas, e cada tentativa pertence a um jogador. | --- |
-| QUIZ — gera — PONTUAÇÃO | QUIZ (0,1); PONTUAÇÃO (1,1) | Uma tentativa pode ainda não ter pontuação registrada ou ter uma única pontuação; cada pontuação pertence a uma tentativa. | --- |
 | | | | RD__ |
 
 O diagrama e esta tabela descrevem o mesmo modelo. Toda entidade do desenho está na tabela.
-<img width="2200" height="1700" alt="DER" src="https://github.com/user-attachments/assets/a5bdfa8d-0115-4c94-b780-4936a3787e28" />
+<img width="3300" height="2550" alt="DER-NOVO" src="https://github.com/user-attachments/assets/abc63eb7-41e2-4149-b866-6de47822ff10" />
+
 

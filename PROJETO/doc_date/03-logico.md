@@ -8,15 +8,15 @@ O desenho parte do modelo conceitual e mostra tabelas, colunas, chave primária 
 
 | Relacionamento no DER | Cardinalidade | Vira | Onde fica a FK ou a tabela associativa |
 | --- | --- | --- | --- |
-| CATEGORIA possui PERGUNTA | 1:N | FK no lado N | `PERGUNTA.categoria_codigo` referencia `CATEGORIA.codigo`. |
-| DIFICULDADE contém PERGUNTA | 1:N | FK no lado N | `PERGUNTA.dificuldade_codigo` referencia `DIFICULDADE.codigo`. |
-| PERGUNTA possui ALTERNATIVA | 1:N | FK no lado N | `ALTERNATIVA.pergunta_codigo` referencia `PERGUNTA.codigo`. |
-| PERGUNTA utiliza FONTE | 1:N (FONTE → PERGUNTA) | FK no lado N | `PERGUNTA.fonte_url` referencia `FONTE.url`; cada pergunta possui uma referência e uma fonte pode ser usada por várias perguntas. |
+| CATEGORIA possui PERGUNTA | 1:N | FK no lado N | `PERGUNTA.categoria_codigo` referencia `CATEGORIA.cod`. |
+| DIFICULDADE contém PERGUNTA | 1:N | FK no lado N | `PERGUNTA.dificuldade_codigo` referencia `dificuldade.cod`. |
+| PERGUNTA possui ALTERNATIVA | 4:N | FK no lado 4 | `ALTERNATIVA.pergunta_id` referencia `alternativa.id`. |
+| PERGUNTA utiliza FONTE | N;1 | FK no lado N | `PERGUNTA.fonte_url` referencia `fonte.url`; cada pergunta possui uma referência e uma fonte pode ser usada por várias perguntas. |
 | PUBLICADOR publica FONTE | 1:N | FK no lado N | `FONTE.publicador_id` referencia `PUBLICADOR.id`. |
-| IDIOMA identifica FONTE | 1:N | FK no lado N | `FONTE.idioma_codigo` referencia `IDIOMA.codigo`. |
-| PERGUNTA possui PALAVRA-CHAVE | N:N | tabela associativa | `PERGUNTA_PALAVRA_CHAVE` contém `pergunta_codigo` e `palavra_chave_id` como FKs e chave primária composta. |
-| JOGADOR registra PONTUAÇÃO | 1:N | relacionamento derivado para evitar redundância | A pontuação do jogador é obtida por `PONTUACAO.quiz_identificador` → `QUIZ.identificador` e `QUIZ.jogador_id` → `JOGADOR.id`; não se repete `jogador_id` em `PONTUACAO`. |
-| QUIZ contém PERGUNTA | N:N | tabela associativa | `QUIZ_PERGUNTA` contém `quiz_identificador` e `pergunta_codigo` como FKs e chave primária composta, permitindo reutilizar perguntas em quizzes diferentes. |
+| IDIOMA identifica FONTE | 1:N | FK no lado N | `FONTE.idioma_codigo` referencia `IDIOMA.cod`. |
+| PERGUNTA possui PALAVRA-CHAVE | N:N | tabela associativa | `PERGUNTA` contém `palavra-chave.id`|
+| JOGADOR registra PONTUAÇÃO | 1:N | relacionamento derivado para evitar redundância | A pontuação do jogador é obtida por `PONTUACAO.quiz_id` → `QUIZ.id` e `QUIZ.jogador_id` → `JOGADOR.id`; não se repete `jogador_id`. |
+| QUIZ contém PERGUNTA | N:N | tabela associativa | `QUIZ_PERGUNTA` contém `quiz_id` e `pergunta_cod` como FKs e chave primária composta, permitindo reutilizar perguntas em quizzes diferentes. |
 | QUIZ gera PONTUAÇÃO | 1:N | FK no lado N | `PONTUACAO.quiz_identificador` referencia `QUIZ.identificador`; não é `UNIQUE`, pois o modelo conceitual admite várias pontuações por quiz. |
 | JOGADOR realiza QUIZ | 1:N | FK no lado N | `QUIZ.jogador_id` referencia `JOGADOR.id`. |
 

@@ -7,6 +7,7 @@ Marco M1. A entrega deste passo é o modelo conceitual: o desenho em `entregas/0
 ## Entidades
 
 | Entidade | Atributos | Identificador |
+| --- | --- | --- |
 | CATEGORIA | código, nome | código |
 | PERGUNTA | código, título, enunciado, explicação | código |
 | ALTERNATIVA | id, letra, texto, correta (sim/não) | id |

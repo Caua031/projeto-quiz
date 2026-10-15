@@ -41,7 +41,7 @@ Uma frase por linha, ligada a um requisito. Cardinalidade dos dois lados, mínim
 
 
 O diagrama e esta tabela descrevem o mesmo modelo. Toda entidade do desenho está na tabela.
-<img width="2200" height="1700" alt="modelo logico DER" src="https://github.com/user-attachments/assets/bc5f802b-c797-47e6-bb10-17705d8f9c5e" />
+<img width="2200" height="1700" alt="modelo logico DER01" src="https://github.com/user-attachments/assets/c1f2d2ea-128a-4b92-8234-fd19494f88b7" />
 
 
 

@@ -4,8 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio Categorias Quiz</title>
+    <link rel="stylesheet" href="categorias.css">
 </head>
 <body>
-    
+    <!-- Campo de Busca -->
+    <header class="cabecalho">
+        <h1>Categorias sobre Cibersegurança</h1>
+        <div class="busca-container">
+            <img src="/imagens/lupa.png" alt="Lupa de pesquisa">
+            <input type="text" id="campoBusca" placeholder="Digite uma categoria.">
+        </div>
+    </header> 
+
+    <section class="container-categorias">
+        <!-- Lista de Categorias -->
+        <ul class="lista-categorias" id="listaCategorias">
+            <li class="categoria-item">
+                <h1>phishing</h1>
+                <p>Phishing é um golpe virtual onde criminosos usam mensagens
+                     falsas (e-mails, SMS, WhatsApp) se passando por marcas
+                      confiáveis. O objetivo é enganar você para roubar dados
+                       pessoais, senhas ou dinheiro.</p>
+                <button id="btn-entrar">ENTRAR</button>
+            </li>
+            <li class="categoria-item">
+                <h1>malware</h1>
+                <p>Malware é qualquer software ou programa malicioso criado 
+                     para infectar, danificar ou invadir computadores e 
+                     celulares, com o objetivo de roubar dados ou espionar 
+                     o usuário.</p>
+                <button id="btn-entrar">ENTRAR</button>
+            </li>
+            <li class="categoria-item">
+                <h1>engenharia social</h1>
+                <p>Engenharia social é a técnica de manipulação psicológica 
+                     usada por golpistas para ganhar a sua confiança, fazendo 
+                     com que você entregue informações confidenciais de forma 
+                     voluntária.</p>
+                <button id="btn-entrar">ENTRAR</button>                
+            </li>
+            <li class="categoria-item">
+                <h1>redes</h1>
+                <p>Redes são as estruturas que conectam dispositivos para trocar 
+                     dados. Na segurança, foca em proteger o tráfego de internet, 
+                     wi-fi e conexões contra interceptações de hackers.</p>
+                <button id="btn-entrar">ENTRAR</button>                
+            </li>
+            <li class="categoria-item">
+                <h1>proteção de dados</h1>
+                <p>Proteção de dados envolve práticas, leis e ferramentas para 
+                     garantir que suas informações pessoais fiquem seguras, privadas 
+                     e longe do alcance de empresas ou pessoas não autorizadas.</p>
+                <button id="btn-entrar">ENTRAR</button>                
+            </li>
+            <li class="categoria-item">
+                <h1>ransomware</h1>
+                <p>Ransomware é um tipo de malware que sequestra e bloqueia os arquivos 
+                     do seu aparelho criptografando-os, exigindo um pagamento de 
+                     resgate para devolver o acesso.</p>
+                <button id="btn-entrar">ENTRAR</button>  
+            </li>
+        </ul>
+    </section>
+
+    <footer class="rodape">
+        <h1>dificuldades</h1>
+        <div class="escolha-dificuldades">
+            <button id="btn-dificuldade" class="btn-1">Facil</button>
+            <button id="btn-dificuldade" class="btn-2">Medio</button>
+            <button id="btn-dificuldade" class="btn-3">Dificil</button>
+        </div>
+    </footer>
+
 </body>
 </html>

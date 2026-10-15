@@ -18,7 +18,7 @@ Marco M1. A entrega deste passo é o modelo conceitual: o desenho em `entregas/0
 | PONTUAÇÃO | id, pontos | id |
 | DIFICULDADE | código, descrição (fácil, médio ou difícil) | código |
 | PALAVRA-CHAVE | id, termo | id |
-| | | |
+
 
 ## Relacionamentos
 
@@ -36,7 +36,7 @@ Uma frase por linha, ligada a um requisito. Cardinalidade dos dois lados, mínim
 | QUIZ — gera — PONTUAÇÃO | QUIZ (0,N); PONTUAÇÃO (1,1) | Um quiz pode gerar várias pontuações; cada pontuação está associada a uma realização de quiz. | --- |
 | DIFICULDADE - contém - PERGUNTA | DIFICULDADE (0,N) ;PERGUNTA (1,1) | Um nível pode classificar várias perguntas, enquanto cada pergunta pertence a exatamente um nível. | --- |
 | JOGADOR - realiza - QUIZ |JOGADOR (0,N); QUIZ (1,1)| um jogador pode realizar várias tentativas, e cada tentativa pertence a um jogador. | --- |
-| | | | RD__ |
+
 
 O diagrama e esta tabela descrevem o mesmo modelo. Toda entidade do desenho está na tabela.
 <img width="2200" height="1700" alt="modelo logico DER" src="https://github.com/user-attachments/assets/bc5f802b-c797-47e6-bb10-17705d8f9c5e" />

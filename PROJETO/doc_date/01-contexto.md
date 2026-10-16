@@ -6,7 +6,7 @@
 
 ## 1. Introdução e contexto
 
-O **Tech Trivia** é um quiz de afirmações com o tema de Tecnologia da Informação. O jogador lê uma frase sobre determinado assunto e marca se ela é **Certo** ou **Errado** (entre 4 opções de escolhas), recebendo em seguida uma explicação apoiada em uma fonte publicada.
+O Tech Trivia é um quiz de afirmações sobre Tecnologia da Informação. O jogador lê uma frase sobre determinado assunto e indica se ela está certa ou errada, recebendo em seguida uma explicação fundamentada em uma fonte publicada. O banco de dados deve permitir o cadastro flexível de alternativas, possibilitando a inclusão de mais opções de resposta futuramente.
 
 O objetivo deste banco de dados é armazenar perguntas, categorias, alternativas, explicações e fontes de forma consistente, além de atender às consultas que a aplicação web precisa realizar para exibir o quiz, sortear perguntas e verificar respostas.
 
@@ -20,8 +20,8 @@ A tabela a seguir apresenta as responsabilidades do banco de dados e o que está
 | Armazena fontes, publicadores e idiomas. | Oferece uma interface gráfica. |
 | Garante que os dados relacionados estejam consistentes e evita duplicações indevidas. | Armazena o conteúdo completo de livros e artigos. |
 | Armazena nome de usuário, pontuação e ranking. | Realiza, por si só, o ensino ou a explicação dos conteúdos. |
-| Permite pesquisas por palavras-chave. | |
-| Permite sortear questões e consultar gabaritos. | |
+| Permite pesquisas por palavras-chave. | Envia notificações aos jogadores. |
+| Permite sortear questões e consultar gabaritos. | Corrige ou produz automaticamente o conteúdo das fontes |
 
 ### 1.2 Usuários
 
@@ -38,7 +38,7 @@ Os usuários do sistema e suas respectivas atividades são:
 
 ## 2. Minimundo
 
-O Tech Trivia é um sistema de quiz voltado à aprendizagem de cibersegurança e à exploração de conhecimentos e curiosidades da área de Tecnologia da Informação. Seu objetivo é auxiliar os estudantes na compreensão de conceitos relacionados à segurança digital, estimulando o aprendizado de maneira interativa. O sistema apresenta questões em formato de afirmações, que devem ser avaliadas pelo jogador como certas ou erradas, por meio das alternativas disponíveis (A,B,C,D). Cada questão possui um código único, título, enunciado e explicação, todos obrigatórios, além de estar vinculada a uma categoria e a um nível de dificuldade. As alternativas são identificadas por letras e possuem um texto próprio, sendo que exatamente uma delas deve ser a correta. Após responder, o jogador pode consultar a explicação da questão e a respectiva fonte bibliográfica, permitindo compreender o conteúdo apresentado e conhecer a referência utilizada para fundamentar a resposta.
+O Tech Trivia é um sistema de quiz voltado à aprendizagem de cibersegurança e à exploração de conhecimentos e curiosidades da área de Tecnologia da Informação. Seu objetivo é auxiliar os estudantes na compreensão de conceitos relacionados à segurança digital, estimulando o aprendizado de maneira interativa. As questões são apresentadas em formato de afirmações, que o jogador deve avaliar como certas ou erradas. Cada questão possui alternativas identificadas por letras e acompanhadas de seus respectivos textos. O modelo deve permitir a inclusão de mais de duas alternativas futuramente, mantendo a regra de que exatamente uma alternativa seja a correta.  . Cada questão possui um código único, título, enunciado e explicação, todos obrigatórios, além de estar vinculada a uma categoria e a um nível de dificuldade. As alternativas são identificadas por letras e possuem um texto próprio, sendo que exatamente uma delas deve ser a correta. Após responder, o jogador pode consultar a explicação da questão e a respectiva fonte bibliográfica, permitindo compreender o conteúdo apresentado e conhecer a referência utilizada para fundamentar a resposta.
 Cada questão está associada a uma única referência bibliográfica, identificada por uma URL que não pode se repetir no cadastro de fontes, embora uma mesma referência possa ser utilizada em diferentes questões. As fontes possuem informações sobre título, publicador e idioma, permitindo organizar e identificar os materiais consultados. Para facilitar a localização dos conteúdos, as questões podem possuir palavras-chave, que são cadastradas uma única vez e podem ser compartilhadas entre várias questões. O sistema também permite organizar quizzes compostos por uma ou mais perguntas, possibilitando que uma mesma questão seja utilizada em diferentes quizzes. Cada jogador é identificado por um nome e pode realizar diferentes tentativas, acumulando pontuações que serão utilizadas para compor o ranking. Ao finalizar uma tentativa, sua pontuação fica registrada para consulta e classificação. Além disso, o responsável pelo cadastro pode registrar, consultar, alterar e excluir questões e suas informações relacionadas, como alternativas, categorias, níveis de dificuldade, referências bibliográficas e palavras-chave. Dessa forma, o banco de dados mantém as informações organizadas e consistentes, possibilitando o sorteio de questões, a consulta por categoria e dificuldade, a pesquisa por palavras-chave e a verificação das respostas e pontuações.
 
 ---

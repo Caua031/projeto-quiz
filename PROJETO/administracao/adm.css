@@ -1,0 +1,123 @@
+@import url("https://db.onlinewebfonts.com/c/8ac6d61c270feef80b9ad082aa94e533?family=Kyiv%2AType+Titling");
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIÁVEIS */
+:root {
+  --cor-fundo: #ffffffbd;
+  --cor-preto: #000;
+  --cor-texto: #ffffff;
+  --fonte-principal: "Kyiv*Type Titling", Georgia, serif;
+  --font-secundaria: "Leckerli One", cursive;
+}
+
+body{
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.76);
+}
+
+/* AREA DE PERFIL */
+.cabecalho{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    color: var(--cor-texto);
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.cabecalho img{
+    width: 50px;
+    height: 50px;
+    background-color: var(--cor-fundo);
+    border-radius: 50px;
+}
+
+/* AREA DE MENU */
+.container-menu {
+    width: 24rem;
+    height: 40rem;
+    left: 20px;
+    background-color: var(--cor-fundo);
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 40px;
+    margin-top: 50px;
+}
+
+.container-menu h1 {
+    font-family: var(--fonte-principal);
+}
+
+.lista-menu{
+    list-style: none;
+    margin-top: 40px;
+}
+
+.btn-menu{
+    width: 350px;
+    height: 45px;
+    font-size: 20px;
+    font-family: var(--font-secundaria);
+    border-radius: 20px;
+    border: 1px solid var(--cor-preto);
+    margin-top: 20px;
+}
+
+.btn-menu:hover{
+    background-color: #080f1c83;
+    color: var(--cor-texto);
+}
+
+/* =========================
+   BACKGROUND CANVAS
+========================= */
+
+html {
+    min-height: 100%;
+    background-color: #080f1c;
+}
+
+#background {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* animacao fundo */
+body > *:not(#background) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .lista-categorias {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .lista-categorias {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Respeita a preferência por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    #background {
+        opacity: 0.65;
+    }
+}

@@ -208,7 +208,7 @@ function showQuestion() {
 function resetState() {
     nextButton.style.display = "none";
     feedbackContainer.style.display = "none";
-    feedbackContainer.classList.remove("mostrar"); // Remove a classe de animação
+    feedbackContainer.classList.remove("mostrar", "correct", "incorrect"); // Remove a classe de animação
     while (answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);
     }
@@ -220,18 +220,18 @@ function selectAnswer(e) {
 
     if (isCorrect) {
         selectedBtn.classList.add("correct");
+        feedbackContainer.classList.add("correct");
         score++;
         
         feedbackTitle.innerHTML = "PARABÉNS!";
         feedbackSubtitle.innerHTML = "AAAAAAAAAAAAAAAAAAAH! QUE ACERTO";
-        feedbackContainer.classList.add("correct");
 
     } else {
         selectedBtn.classList.add("incorrect");
+        feedbackContainer.classList.add("incorrect"); // fundo vermelho em teste
         
         feedbackTitle.innerHTML = "QUE PENA!";
         feedbackSubtitle.innerHTML = "VOCÊ ERROU ESSA QUESTÃO";
-        feedbackContainer.classList.add("incorrect"); // fundo vermelho em teste
     }
 
     // Ativa a exibição suave adicionando as classes de animação do CSS
@@ -253,6 +253,7 @@ function selectAnswer(e) {
 
 function showScore() {
     resetState();
+    feedbackContainer.classList.add(score >= quiz.length / 2 ? "correct" : "incorrect");
     questionElement.innerHTML = "Quiz Concluído!";
     
     feedbackTitle.innerHTML = "FIM DE JOGO!";
@@ -300,23 +301,3 @@ botaoRaking.addEventListener("click", function(evento){
 
 
 startQuiz();
-
-
-function static() {
-   $('#dot').css('border-color', 'transparent');
-   $('#dot.active').noisy({
-     'intensity' : 1, 
-     'size' : 1000, 
-     'opacity' : 1, 
-     'fallback' : '', 
-     'monochrome' : true
-   }).css('background-color', '#fff');
-}
-
-static();
-
-$('body').click(function onOff(){
-    $('#dot').toggleClass('active');
-});
-
-

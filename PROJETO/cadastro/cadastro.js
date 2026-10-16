@@ -27,12 +27,13 @@ opcoesAvatar.forEach(opcao => {
 
 formRegistro.addEventListener('submit', function(evento) {
 
+    evento.preventDefault(); // Impede a página de mudar correndo
+
     if (fotoAtual.src.includes("perfil.png")) {
         alert("É necessário usar uma foto de perfil");
         return;
     }
     
-    evento.preventDefault(); // Impede a página de mudar correndo
 
     // === NOVA PARTE: SALVAR NO LOCALSTORAGE ===
     const inputNome = document.getElementById('nome-jogador') || document.querySelector('#form-registro input[type="text"]'); 
@@ -53,6 +54,6 @@ formRegistro.addEventListener('submit', function(evento) {
 
     // Aguarda 2000 milissegundos (2 segundos) antes de mudar de página
     setTimeout(() => {
-        window.location.href = "../index.html";
+        window.location.href = "../categorias/categoria.html";
     }, 2000); 
 });

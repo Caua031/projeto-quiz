@@ -1,3 +1,5 @@
+@import url("https://db.onlinewebfonts.com/c/8ac6d61c270feef80b9ad082aa94e533?family=Kyiv%2AType+Titling");
+
 /* RESET */
 * {
   margin: 0;
@@ -14,8 +16,8 @@
     --cor-fundo-bege: #EFE4D2;
     --cor-fundo-azul-escuro: #8fb9d6;
     --cor-texto-branco: #FFFFFF;
-    --fonte-principal: 'Roboto', sans-serif;
-    --font-secundaria: Verdana, Geneva, Tahoma, sans-serif;
+    --fonte-principal: "Kyiv*Type Titling", Georgia, serif;
+    --font-secundaria: "Leckerli One", cursive;
 }
 
 /* CORPO */
@@ -24,12 +26,10 @@ body {
     min-height: 100vh;
     color: var(--cor-fundo-bege);
     background:
-    /* brilho suave atrás da área do quiz */
-    radial-gradient(ellipse at 50% 45%, rgba(125, 175, 211, 0.20) 0%, transparent 60%),
-    /* reflexo discreto no canto inferior direito */
-    radial-gradient(ellipse at 100% 100%, rgba(188, 229, 245, 0.10) 0%, transparent 50%),
-    /* base escura, com as mesmas cores da sua paleta */
-    linear-gradient(135deg, #0d1a1e 0%, #15262b 50%, #1b3a44 100%);
+        radial-gradient(ellipse at 15% 10%, rgba(94, 234, 212, 0.14) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 90%, rgba(125, 175, 255, 0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 45%, rgba(63, 110, 122, 0.25) 0%, transparent 60%),
+        linear-gradient(135deg, #07121c 0%, #0d2233 50%, #123248 100%);
     background-attachment: fixed;
     overflow: hidden;
 }
@@ -80,7 +80,7 @@ body {
 
 .perfil h1 {
     font-family: var(--font-secundaria);
-    font-size: 15px;
+    font-size: 18px;
     text-transform: uppercase;
     z-index: 1;
 }
@@ -132,14 +132,14 @@ body {
 
 .quiz h1 {
     font-family: var(--font-secundaria);
-    font-size: 15px;
+    font-size: 18px;
     text-transform: uppercase;
     margin: 0px 0px 20px;
 }
 
 .quiz h2{
     font-family: var(--fonte-principal);
-    font-size: 18px;
+    font-size: 25px;
     margin-top: 20px;
 }
 
@@ -162,6 +162,11 @@ body {
     height: auto;
     border: 1px solid #0000014d;
     border-radius: 20px;
+}
+
+.answer-btn span{
+    font-size: 17px;
+    text-transform: uppercase;
 }
 
 .btn {
@@ -230,7 +235,7 @@ body {
     height: 45px;
     margin-top: 30px;
     border-radius: 4px;
-    color: var(#000000);
+    color: #000000;
     text-transform: uppercase;
     border: 1px solid #000000;
 }

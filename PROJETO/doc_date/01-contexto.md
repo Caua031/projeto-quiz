@@ -21,7 +21,7 @@ A tabela a seguir apresenta as responsabilidades do banco de dados e o que está
 | Garante que os dados relacionados estejam consistentes e evita duplicações indevidas. | Armazena o conteúdo completo de livros e artigos. |
 | Armazena nome de usuário, pontuação e ranking. | Realiza, por si só, o ensino ou a explicação dos conteúdos. |
 | Permite pesquisas por palavras-chave. | Envia notificações aos jogadores. |
-| Permite sortear questões e consultar gabaritos. | Corrige ou produz automaticamente o conteúdo das fontes |
+| Permite sortear questões e consultar gabaritos. | Corrige ou produz automaticamente o conteúdo das fontes. |
 
 ### 1.2 Usuários
 
@@ -74,6 +74,9 @@ Esta seção reúne as regras de negócio, os requisitos funcionais e os requisi
 | RF05 | O sistema deve permitir consultar as alternativas e os gabaritos. | Funcional |
 | RF06 | O sistema deve permitir pesquisar questões por palavras-chave. | Funcional |
 | RF07 | O sistema deve permitir alterar e excluir questões. | Funcional |
+| RF08 | O sistema deve permitir organizar quizzes com uma ou mais questões, possibilitando a reutilização de questões em diferentes quizzes.| Funcional |
+| RF09 | O sistema deve permitir registrar as tentativas realizadas pelos jogadores e suas respectivas pontuações | Funcional |
+| RF10 | O sistema deve permitir consultar o ranking dos jogadores com base nas pontuações registradas. | Funcional |
 
 ### 3.3 Requisitos não funcionais
 

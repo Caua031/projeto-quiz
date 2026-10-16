@@ -10,7 +10,7 @@ let particulas = [];
 let animationId = null;
 
 const distanciaConexao = 135;
-const velocidade = 1.35;
+const velocidade = 0.55;
 const quantidadeMaxima = 110;
 
 // ================================
@@ -81,7 +81,7 @@ function desenhar() {
         // Desenhar partícula
         ctx.beginPath();
         ctx.arc(p1.x, p1.y, p1.tamanho, 0, Math.PI * 2);
-        ctx.fillStyle = "rgb(40, 158, 255)";
+        ctx.fillStyle = "rgba(40, 158, 255, 0.67)";
         ctx.fill();
 
         // Conectar partículas próximas
@@ -100,7 +100,7 @@ function desenhar() {
                 ctx.lineTo(p2.x, p2.y);
 
                 ctx.strokeStyle =
-                    `rgba(30, 130, 255, ${opacidade * 5.35})`;
+                    `rgba(30, 130, 255, ${opacidade * 1.35})`;
 
                 ctx.lineWidth = 0.7;
                 ctx.stroke();

@@ -6,7 +6,7 @@
 
 ## 1. Introdução e contexto
 
-O **Tech Trivia** é um quiz de afirmações com o tema de Tecnologia da Informação. O jogador lê uma frase sobre determinado assunto e marca se ela é **Certo** ou **Errado**, recebendo em seguida uma explicação apoiada em uma fonte publicada.
+O **Tech Trivia** é um quiz de afirmações com o tema de Tecnologia da Informação. O jogador lê uma frase sobre determinado assunto e marca se ela é **Certo** ou **Errado** (entre 4 opções de escolhas), recebendo em seguida uma explicação apoiada em uma fonte publicada.
 
 O objetivo deste banco de dados é armazenar perguntas, categorias, alternativas, explicações e fontes de forma consistente, além de atender às consultas que a aplicação web precisa realizar para exibir o quiz, sortear perguntas e verificar respostas.
 
@@ -80,8 +80,8 @@ Esta seção reúne as regras de negócio, os requisitos funcionais e os requisi
 | Código | Texto do requisito | Tipo |
 |---|---|---|
 | RNF01 | O banco de dados deve utilizar PostgreSQL. | Não funcional |
-| RNF02 | O banco de dados deve garantir a integridade dos dados. | Não funcional |
-| RNF03 | O banco de dados deve evitar registros duplicados nas informações que exigem unicidade. | Não funcional |
+| RNF02 | O banco de dados deve garantir a integridade dos dados, impedindo valores nulos nos campos obrigatórios e referências a registros inexistentes. | Não funcional |
+| RNF03 | O banco de dados deve impedir duplicidades nos códigos de questões, nas URLs das referências bibliográficas e nos registros únicos de palavras-chave. | Não funcional |
 
 ### 3.4 Classificação dos requisitos
 

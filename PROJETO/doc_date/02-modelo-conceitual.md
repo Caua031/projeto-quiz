@@ -1,4 +1,3 @@
-<img width="2200" height="1700" alt="MER" src="https://github.com/user-attachments/assets/97d4d1d0-0b01-4189-8f0b-377245f24eff" /># Passo 4 — Modelo conceitual
 
 Marco M1. A entrega deste passo é o modelo conceitual: o desenho em `entregas/02-conceitual.pdf` (ou `.png`) e as tabelas abaixo.
 

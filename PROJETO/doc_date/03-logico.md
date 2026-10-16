@@ -10,7 +10,7 @@ O desenho parte do modelo conceitual e mostra tabelas, colunas, chave primária 
 | --- | --- | --- | --- |
 | CATEGORIA possui PERGUNTA | 1:N | FK no lado N | `PERGUNTA.categoria_codigo` referencia `CATEGORIA.cod`. |
 | DIFICULDADE contém PERGUNTA | 1:N | FK no lado N | `PERGUNTA.dificuldade_codigo` referencia `dificuldade.cod`. |
-| PERGUNTA possui ALTERNATIVA | 4:N | FK no lado 4 | `ALTERNATIVA.pergunta_id` referencia `alternativa.id`. |
+| PERGUNTA possui ALTERNATIVA | 2:N | FK no lado 4 | `ALTERNATIVA.pergunta_codigo` referencia `PERGUNTA.codigo`. |
 | PERGUNTA utiliza FONTE | N;1 | FK no lado N | `PERGUNTA.fonte_url` referencia `fonte.url`; cada pergunta possui uma referência e uma fonte pode ser usada por várias perguntas. |
 | PUBLICADOR publica FONTE | 1:N | FK no lado N | `FONTE.publicador_id` referencia `PUBLICADOR.id`. |
 | IDIOMA identifica FONTE | 1:N | FK no lado N | `FONTE.idioma_codigo` referencia `IDIOMA.cod`. |

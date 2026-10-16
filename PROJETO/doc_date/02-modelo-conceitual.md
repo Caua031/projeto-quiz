@@ -1,4 +1,4 @@
-# Passo 4 — Modelo conceitual
+<img width="2200" height="1700" alt="MER" src="https://github.com/user-attachments/assets/97d4d1d0-0b01-4189-8f0b-377245f24eff" /># Passo 4 — Modelo conceitual
 
 Marco M1. A entrega deste passo é o modelo conceitual: o desenho em `entregas/02-conceitual.pdf` (ou `.png`) e as tabelas abaixo.
 
@@ -36,11 +36,11 @@ Uma frase por linha, ligada a um requisito. Cardinalidade dos dois lados, mínim
 | QUIZ — contém — PERGUNTA | QUIZ (1,N); PERGUNTA (0,N) | O sistema deve permitir organizar quizzes com uma ou mais perguntas, possibilitando que uma mesma pergunta seja utilizada em diferentes quizzes. | RF08 |
 | QUIZ — gera — PONTUAÇÃO | QUIZ (0,N); PONTUAÇÃO (1,1) | Um quiz pode gerar várias pontuações; cada pontuação está associada a uma realização de quiz. | --- |
 | DIFICULDADE - contém - PERGUNTA | DIFICULDADE (0,N) ;PERGUNTA (1,1) | Um nível pode classificar várias perguntas, enquanto cada pergunta pertence a exatamente um nível. | RD03 |
-| JOGADOR - realiza - QUIZ |JOGADOR (0,N); QUIZ (0,N)| um jogador pode realizar várias tentativas, e cada tentativa pertence a um jogador. | --- |
 | PERGUNTA — possui — PALAVRA-CHAVE | PERGUNTA (0,N); PALAVRA-CHAVE (0,N) | Uma pergunta pode possuir nenhuma ou várias palavras-chave, e uma palavra-chave pode estar associada a nenhuma ou várias perguntas. | RD08 e RD09 |
 
 O diagrama e esta tabela descrevem o mesmo modelo. Toda entidade do desenho está na tabela.
-<img width="2200" height="1700" alt="modelo logico DERFinal" src="https://github.com/user-attachments/assets/84bafe7e-5161-4459-af0d-6e3be5e9e400" />
-
+MER ->
+<img width="2200" height="1700" alt="MER" src="https://github.com/user-attachments/assets/05640081-f536-46f5-9faa-20a9ea2b6678" />
+DER ->
 
 

@@ -41,5 +41,5 @@ O diagrama e esta tabela descrevem o mesmo modelo. Toda entidade do desenho estÃ
 MER ->
 <img width="2200" height="1700" alt="MER" src="https://github.com/user-attachments/assets/05640081-f536-46f5-9faa-20a9ea2b6678" />
 DER ->
-
+<img width="2200" height="1700" alt="modelo logico DER_final" src="https://github.com/user-attachments/assets/e30a8a35-1118-4fb5-918d-4bce141eca1e" />
 

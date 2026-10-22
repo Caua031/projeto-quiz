@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <header class="cabecalho">
+
+        <div class="perfil">
+            <img src="./imagens/perfil.png" alt="Foto de perfil">
+            <h1>Jogador Anonimo</h1>
+        </div>
+
+        <div class="score">
+            <h1 class="pontos">pontos:0</h1>
+        </div>
+
+    </header>
+
+    <div class="app">
+
+        <div class="quiz">
+            
+            <h1>pergunta 1/10</h1>
+
+            <div id="progress"></div>
+
+            <h2 id="question">Carregando pergunta...</h2>
+            
+            <!-- Alternativas: montadas pelo script.js com o que a API devolve -->
+            <div class="answer-btn"></div>
+
+            <main class="container">
+                <h1>PARABÉNS!</h1>
+                <h2>AAAAAAAAAAAAAAAAAAAH! QUE ACERTO</h2>
+                <p id="explicacao" class="explicacao"></p>
+                <p id="fonte" class="fonte"></p>
+            </main>
+            
+            <button id="next-btn" class="buttons">Proximo</button>
+            <button id="raking-jogador" class="buttons">Area de Raking</button>
+            <button id="voltar-categorias" class="buttons">Escolher categoria</button>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+    <script src="fundoicones.js"></script>
+</body>
+</html>

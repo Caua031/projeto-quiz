@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area de administração</title>
+    <link rel="stylesheet" href="adm.css">
+</head>
+<body>
+
+    <canvas id="background"></canvas>
+
+    <header class="cabecalho">
+        <img src="../imagens/perfil.png" alt="Foto de perfil">
+        <h1>Bem-vindo(a), Usuario.</h1>
+        <button class="btn-sair" id="btn-sair">Sair</button>
+    </header>
+
+    <div class="menu">
+        <aside class="container-menu">
+            <h1>MENU</h1>
+
+            <ul class="lista-menu">
+                <li><button class="btn-menu" data-secao="dashboard">Dashboard</button></li>
+                <li><button class="btn-menu" data-secao="perguntas">Perguntas</button></li>
+                <li><button class="btn-menu" data-secao="categorias">Categorias</button></li>
+                <li><button class="btn-menu" data-secao="usuarios">Usuários</button></li>
+                <li><button class="btn-menu" data-secao="ranking">Ranking</button></li>
+                <li><button class="btn-menu" data-secao="configuracoes">Configurações</button></li>
+            </ul>
+        </aside>
+
+        <main class="area-adm">
+            <section id="secao-dashboard" class="secao">
+                <h2>Dashboard</h2>
+                <!-- montado pelo adm.js com RA01, RA06 e RA07 da API -->
+                <div id="dashboard-conteudo" class="dash-grid"></div>
+            </section>
+            <section id="secao-perguntas" class="secao"><h2>Perguntas</h2></section>
+            <section id="secao-categorias" class="secao"><h2>Categorias</h2></section>
+            <section id="secao-usuarios" class="secao"><h2>Usuários</h2></section>
+            <section id="secao-ranking" class="secao"><h2>Ranking</h2></section>
+            <section id="secao-configuracoes" class="secao"><h2>Configurações</h2></section>
+        </main>
+    </div>
+
+    <script src="../categorias/background.js"></script>
+    <script src="../api.js"></script>
+    <script src="adm.js"></script>
+</body>
+</html>

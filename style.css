@@ -1,0 +1,272 @@
+@import url("https://db.onlinewebfonts.com/c/8ac6d61c270feef80b9ad082aa94e533?family=Kyiv%2AType+Titling");
+@import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIAVEIS */
+:root {
+    --cor-principal: #FFFFFF;
+    --cor-branco-pastel: #faf7f1;
+    --cor-buttons-perguntas: #AEDFF2;
+    --cor-buttons-next: #3F6E7A;
+    --cor-fundo-bege: #EFE4D2;
+    --cor-fundo-azul-escuro: #8fb9d6;
+    --cor-texto-branco: #FFFFFF;
+    --fonte-principal: "Kyiv*Type Titling", Georgia, serif;
+    --font-secundaria: "Leckerli One", cursive;
+}
+
+/* CORPO */
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--cor-fundo-bege);
+    background:
+        radial-gradient(ellipse at 15% 10%, rgba(94, 234, 212, 0.14) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 90%, rgba(125, 175, 255, 0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 45%, rgba(63, 110, 122, 0.25) 0%, transparent 60%),
+        linear-gradient(135deg, #07121c 0%, #0d2233 50%, #123248 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    overflow-y: auto; /* a explicação da resposta pode passar da altura da tela */
+}
+
+
+/* CAMADA DOS ÍCONES */
+#bg-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #00000020;
+}
+
+.score {
+    width: auto;
+    height: auto;
+    background-color: var(--cor-buttons-next);
+    border-radius: 8px;
+    color: var(--cor-texto-branco);
+    font-family: var(--font-secundaria);
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.pontos {
+    margin: 8px;
+}
+
+.perfil{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--cor-fundo-bege);
+    z-index: 1;
+}
+
+.perfil h1 {
+    font-family: var(--font-secundaria);
+    font-size: 18px;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.perfil img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin-left: 40px;
+    background-color: #3F6E7A;
+    z-index: 1;
+}
+
+#progress {
+  display: flex;
+  width: 100%;
+  height: 12px;
+  gap: 5px;
+}
+
+.barra {
+  flex: 1;
+  background-color: var(--cor-fundo-bege );
+  height: 100%;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+  border: 1px solid #00000015;
+}
+
+.barra.active {
+    background-color: var(--cor-fundo-azul-escuro);
+}
+
+.app {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.quiz {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 90em;
+}
+
+.quiz h1 {
+    font-family: var(--font-secundaria);
+    font-size: 18px;
+    text-transform: uppercase;
+    margin: 0px 0px 20px;
+}
+
+.quiz h2{
+    font-family: var(--fonte-principal);
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.answer-btn{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.answer-btn .btn{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding-left: 9px;
+}
+
+.answer-btn img{
+    width: 40px;
+    height: auto;
+    border: 1px solid #0000014d;
+    border-radius: 20px;
+}
+
+.answer-btn span{
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.btn {
+    width: auto;
+    height: 70px;
+    border-radius: 10px;
+    font-family: var(--font-secundaria);
+}
+
+.btn:hover{
+    background-color: var(--cor-buttons-perguntas);
+}
+
+.btn.correct {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn.incorrect {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.container {
+    width: auto;
+    min-height: 200px; /* cresce para caber explicação e fonte */
+    padding-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    margin-top: 80px;
+    background-color: #0000002c;
+    text-transform: uppercase;
+    display: none;
+}
+
+.container.correct {
+    background-color: #28a746;
+    border: 1px solid #000000;
+    color: white;
+}
+
+.container.incorrect {
+    background-color: #dc3545;
+    border: 1px solid #000000;
+    color: white;
+}
+
+.container h1 {
+    padding-top: 20px;
+    font-family: var(--fonte-principal);
+    font-size: 40px;
+}
+
+.container h2 {
+    font-family: var(--font-secundaria);
+    font-size: 15px;
+}
+
+.buttons {
+    font-family: var(--font-secundaria);
+    width: 20em;
+    height: 45px;
+    margin-top: 30px;
+    border-radius: 4px;
+    color: #000000;
+    text-transform: uppercase;
+    border: 1px solid #000000;
+}
+
+.buttons:hover {
+    color: #000000;
+    background-color: var(--cor-fundo-azul-escuro);
+}
+/* EXPLICAÇÃO E FONTE (vêm da API depois de responder) */
+.container .explicacao {
+    font-family: var(--fonte-principal);
+    font-size: 16px;
+    line-height: 1.45;
+    text-transform: none;
+    max-width: 60em;
+    margin: 14px auto 0;
+    padding: 0 20px;
+}
+
+.container .fonte {
+    font-family: var(--font-secundaria);
+    font-size: 13px;
+    text-transform: none;
+    margin-top: 12px;
+    padding: 0 20px;
+}
+
+.container .fonte a {
+    color: inherit;
+    text-decoration: underline;
+}

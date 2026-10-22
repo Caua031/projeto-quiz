@@ -1,0 +1,240 @@
+@import url("https://db.onlinewebfonts.com/c/8ac6d61c270feef80b9ad082aa94e533?family=Kyiv%2AType+Titling");
+@import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIÁVEIS */
+:root {
+  --cor-fundo: #ffffffbd;
+  --cor-preto: #000;
+  --cor-texto: #ffffff;
+  --fonte-principal: "Kyiv*Type Titling", Georgia, serif;
+  --font-secundaria: "Leckerli One", cursive;
+}
+
+html {
+    min-height: 100%;
+    background-color: #080f1c;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.76);
+}
+
+/* AREA DE PERFIL */
+.cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    color: var(--cor-texto);
+    text-transform: uppercase;
+}
+
+.cabecalho h1 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.cabecalho img {
+    width: 50px;
+    height: 50px;
+    background-color: var(--cor-fundo);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.btn-sair {
+    margin-left: auto;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--cor-texto);
+    background: transparent;
+    color: var(--cor-texto);
+    font-family: var(--font-secundaria);
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-sair:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* LAYOUT PRINCIPAL */
+.menu {
+    flex: 1;
+    min-height: 0;          /* permite rolar dentro dos painéis */
+    display: flex;
+    align-items: stretch;   /* menu e painel com a mesma altura */
+    gap: 24px;
+    padding: 0 20px 20px;
+}
+
+/* AREA DE MENU */
+.container-menu {
+    width: 18rem;
+    flex-shrink: 0;
+    background-color: var(--cor-fundo);
+    border-radius: 20px;
+    text-align: center;
+    padding: 30px 20px;
+    overflow-y: auto;
+}
+
+.container-menu h1 {
+    font-family: var(--fonte-principal);
+}
+
+.lista-menu {
+    list-style: none;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.btn-menu {
+    width: 100%;
+    height: 45px;
+    font-size: 18px;
+    font-family: var(--font-secundaria);
+    border-radius: 20px;
+    border: 1px solid var(--cor-preto);
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-menu:hover {
+    background-color: #080f1c83;
+    color: var(--cor-texto);
+}
+
+.btn-menu.active {
+    background-color: #8fb9d6;
+    color: #000;
+    font-weight: bold;
+}
+
+/* PAINEL DA DIREITA */
+.area-adm {
+    flex: 1;
+    min-width: 0;
+    background: var(--cor-fundo);
+    border-radius: 20px;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.secao {
+    display: none;
+}
+
+.secao.ativa {
+    display: block;
+}
+
+.secao h2 {
+    font-family: var(--fonte-principal);
+    margin-bottom: 20px;
+}
+
+/* DASHBOARD */
+.dash-grid {
+    display: grid;
+    gap: 24px;
+}
+
+.dash-bloco h3 {
+    font-family: var(--fonte-principal);
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.dash-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.dash-tabela th,
+.dash-tabela td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #0000001f;
+    overflow-wrap: anywhere;
+}
+
+.dash-tabela th {
+    background: #8fb9d6;
+}
+
+.dash-tabela th:last-child,
+.dash-tabela td:last-child {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.dash-tabela td.dash-vazio {
+    text-align: center;
+    color: #555;
+}
+
+/* =========================
+   BACKGROUND CANVAS
+========================= */
+#background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* conteúdo fica na frente da animação de fundo */
+body > *:not(#background) {
+    position: relative;
+    z-index: 1;
+}
+
+/* TELAS MENORES */
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .container-menu {
+        width: 100%;
+        padding: 20px;
+        overflow-y: visible;
+    }
+
+    .lista-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .lista-menu li {
+        flex: 1 1 140px;
+    }
+
+    .area-adm {
+        flex: none;
+        min-height: 20rem;
+    }
+}

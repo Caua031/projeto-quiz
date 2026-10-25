@@ -1,11 +1,10 @@
-// rotas/fontes.js — Etapa 5.4: RA07
+// rotas/fontes.js
 const express = require('express');
 const pool = require('../db');
 
 const router = express.Router();
 
 // GET /api/fontes/repetidas
-// RA07: fontes citadas por MAIS DE UMA pergunta.
 router.get('/repetidas', async (req, res) => {
   try {
     const { rows } = await pool.query(

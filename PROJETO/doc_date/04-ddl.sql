@@ -72,7 +72,6 @@ CREATE TABLE fonte (
 );
 
 -- Pergunta. O código (ex.: 'fact-001') é a chave primária.
--- Toda FK é NOT NULL porque os mínimos do modelo conceitual são 1.
 CREATE TABLE pergunta (
     codigo         VARCHAR(20)   PRIMARY KEY,
     titulo         VARCHAR(150)  NOT NULL,
@@ -145,7 +144,7 @@ CREATE TABLE quiz_pergunta (
 );
 
 -- Pontuação registrada de um quiz.
--- id_quiz NÃO é UNIQUE: o modelo conceitual admite várias pontuações por quiz.
+-- id_quiz NÃO é UNIQUE
 -- O jogador não é repetido aqui: obtém-se por pontuacao -> quiz -> jogador.
 -- O ranking é uma consulta (soma de pontos por jogador), não uma tabela.
 CREATE TABLE pontuacao (

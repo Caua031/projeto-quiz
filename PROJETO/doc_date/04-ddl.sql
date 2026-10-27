@@ -15,7 +15,7 @@ BEGIN;
 
 -- BLOCO 1 — tabelas que não dependem de nenhuma outra
 CREATE TABLE categoria (
-    id_categoria INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id_categoria INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, --GENERATED ALWAYS cria uma numeração automatica, AS IDENTITY, verificar a numeração da coluna e mantém a sequência númerica
     nome         VARCHAR(60) NOT NULL,
     CONSTRAINT categoria_nome_uq UNIQUE (nome)
 );
@@ -131,7 +131,7 @@ CREATE TABLE quiz (
         REFERENCES jogador (id_jogador)
 );
 
--- Associação N:N entre quiz e pergunta (RF08): a mesma pergunta pode aparecer em quizzes diferentes. A linha é só um vínculo, então
+-- Associação N:N entre quiz e pergunta: a mesma pergunta pode aparecer em quizzes diferentes. A linha é só um vínculo, então
 -- ON DELETE CASCADE nos dois lados
 CREATE TABLE quiz_pergunta (
     id_quiz         INTEGER     NOT NULL,
@@ -156,7 +156,7 @@ CREATE TABLE pontuacao (
         REFERENCES quiz (id_quiz)
 );
 
--- Domínio fixo.
+-- Domínio fixo de dificuldade.
 INSERT INTO dificuldade (descricao) VALUES ('Fácil'), ('Médio'), ('Difícil');
 
 -- Domíno fixo de idiomas;

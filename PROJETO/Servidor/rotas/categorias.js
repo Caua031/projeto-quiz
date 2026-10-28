@@ -1,10 +1,10 @@
-// rotas/categorias.js 
+// rotas/categorias.js — Etapa 5.1: RA01
 const express = require('express');
 const pool = require('../db');
 
 const router = express.Router();
 
-//
+// RA01: categorias em ordem alfabética, com a quantidade de perguntas
 router.get('/', async (req, res) => {
   try {
     const { rows } = await pool.query(

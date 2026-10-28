@@ -1,10 +1,11 @@
-// rotas/publicadores.js 
+// rotas/publicadores.js — Etapa 5.4: RA06
 const express = require('express');
 const pool = require('../db');
 
 const router = express.Router();
 
-
+// GET /api/publicadores/mais-citados
+// RA06: publicadores com a quantidade de perguntas que citam fontes deles, do maior para o menor.
 router.get('/mais-citados', async (req, res) => {
   try {
     const { rows } = await pool.query(

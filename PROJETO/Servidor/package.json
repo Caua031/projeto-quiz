@@ -4,7 +4,10 @@
   "description": "",
   "main": "servidor.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node test-administracao.js",
+    "test:perguntas": "node test-perguntas.js",
+    "carregar-perguntas": "node carregar-perguntas.js",
+    "migrar": "node migrar.js",
     "start": "node servidor.js",
     "dev": "node --watch servidor.js"
   },

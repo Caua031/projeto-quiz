@@ -1,11 +1,12 @@
-// rotas/perguntas.js 
-// pergunta + alternativas 
+// rotas/perguntas.js — Etapas 5.2 a 5.4: lista com filtros (RF02, RF03, RF06), sorteio (RA02, RF04),
+// pergunta + alternativas (RA03) e resposta com explicação e fonte (RA04, RA05)
 const express = require('express');
 const pool = require('../db');
 
 const router = express.Router();
 
 // Parte comum do SELECT: pergunta + nome da categoria + descrição da dificuldade.
+// Repare que "correta" NÃO é selecionada em nenhuma consulta desta etapa.
 const BASE_PERGUNTA = `
   SELECT p.codigo, p.titulo, p.enunciado,
          c.nome AS categoria, d.descricao AS dificuldade
@@ -29,6 +30,8 @@ async function buscarAlternativas(codigo) {
   return rows;
 }
 
+// GET /api/perguntas?categoria=1&dificuldade=2&palavra=golpe   (todos os filtros são opcionais)
+// RF02 (categoria), RF03 (dificuldade) e RF06 (palavra-chave). Lista vazia é resposta válida: 200 e [].
 router.get('/', async (req, res) => {
   const categoria = lerInteiro(req.query.categoria);
   const dificuldade = lerInteiro(req.query.dificuldade);
@@ -68,6 +71,8 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET /api/perguntas/sorteio?categoria=1&dificuldade=2   (os dois filtros são opcionais)
+// IMPORTANTE: esta rota vem ANTES de "/:codigo"; senão "sorteio" seria lido como um código.
 router.get('/sorteio', async (req, res) => {
   const categoria = lerInteiro(req.query.categoria);
   const dificuldade = lerInteiro(req.query.dificuldade);
@@ -103,6 +108,7 @@ router.get('/sorteio', async (req, res) => {
   }
 });
 
+// GET /api/perguntas/fact-001
 router.get('/:codigo', async (req, res) => {
   try {
     const { rows } = await pool.query(BASE_PERGUNTA + ' WHERE p.codigo = $1', [
@@ -122,6 +128,7 @@ router.get('/:codigo', async (req, res) => {
   }
 });
 
+// POST /api/perguntas/fact-001/resposta     corpo (JSON): {"letra":"A"}
 router.post('/:codigo/resposta', async (req, res) => {
   const letra = req.body?.letra;
   if (typeof letra !== 'string' || letra.length === 0) {
@@ -129,6 +136,7 @@ router.post('/:codigo/resposta', async (req, res) => {
   }
 
   try {
+    // RA05: explicação e fonte da pergunta
     const dados = await pool.query(
       `SELECT p.explicacao, f.titulo AS fonte_titulo, f.url AS fonte_url,
               pu.nome AS publicador, i.descricao AS idioma
@@ -143,6 +151,7 @@ router.post('/:codigo/resposta', async (req, res) => {
       return res.status(404).json({ erro: 'Pergunta não encontrada.' });
     }
 
+    // RA04: alternativas COM o gabarito (ele fica só no servidor)
     const alternativas = await pool.query(
       'SELECT letra, texto, correta FROM alternativa WHERE pergunta_codigo = $1 ORDER BY letra',
       [req.params.codigo]

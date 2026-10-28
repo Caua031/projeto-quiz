@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio Categorias Quiz</title>
     <link rel="stylesheet" href="categorias.css">
+    <link rel="stylesheet" href="../conta.css">
 </head>
 <body>
     <canvas id="background"></canvas>
@@ -19,65 +20,23 @@
     </header> 
 
     <section class="container-categorias">
-        <!-- Lista de Categorias -->
-        <ul class="lista-categorias" id="listaCategorias">
-            <li class="categoria-item">
-                <h1>phishing</h1>
-                <p>Phishing é um golpe virtual onde criminosos usam mensagens
-                     falsas (e-mails, SMS, WhatsApp) se passando por marcas
-                      confiáveis. O objetivo é enganar você para roubar dados
-                       pessoais, senhas ou dinheiro.</p>
-                <button id="btn-entrar">ENTRAR</button>
-            </li>
-            <li class="categoria-item">
-                <h1>malware</h1>
-                <p>Malware é qualquer software ou programa malicioso criado 
-                     para infectar, danificar ou invadir computadores e 
-                     celulares, com o objetivo de roubar dados ou espionar 
-                     o usuário.</p>
-                <button id="btn-entrar">ENTRAR</button>
-            </li>
-            <li class="categoria-item">
-                <h1>engenharia social</h1>
-                <p>Engenharia social é a técnica de manipulação psicológica 
-                     usada por golpistas para ganhar a sua confiança, fazendo 
-                     com que você entregue informações confidenciais de forma 
-                     voluntária.</p>
-                <button id="btn-entrar">ENTRAR</button>                
-            </li>
-            <li class="categoria-item">
-                <h1>redes</h1>
-                <p>Redes são as estruturas que conectam dispositivos para trocar 
-                     dados. Na segurança, foca em proteger o tráfego de internet, 
-                     wi-fi e conexões contra interceptações de hackers.</p>
-                <button id="btn-entrar">ENTRAR</button>                
-            </li>
-            <li class="categoria-item">
-                <h1>proteção de dados</h1>
-                <p>Proteção de dados envolve práticas, leis e ferramentas para 
-                     garantir que suas informações pessoais fiquem seguras, privadas 
-                     e longe do alcance de empresas ou pessoas não autorizadas.</p>
-                <button id="btn-entrar">ENTRAR</button>                
-            </li>
-            <li class="categoria-item">
-                <h1>ransomware</h1>
-                <p>Ransomware é um tipo de malware que sequestra e bloqueia os arquivos 
-                     do seu aparelho criptografando-os, exigindo um pagamento de 
-                     resgate para devolver o acesso.</p>
-                <button id="btn-entrar">ENTRAR</button>  
-            </li>
-        </ul>
+        <!-- Lista de Categorias: montada pelo categoria.js com o que a API devolve (GET /api/categorias) -->
+        <ul class="lista-categorias" id="listaCategorias"></ul>
+        <p class="status-categorias" id="statusCategorias">Carregando categorias...</p>
     </section>
 
     <footer class="rodape">
         <h1>escolha uma dificuldade</h1>
         <div class="escolha-dificuldades">
-            <button id="btn-dificuldade" class="btn-1">Facil</button>
-            <button id="btn-dificuldade" class="btn-2">Medio</button>
-            <button id="btn-dificuldade" class="btn-3">Dificil</button>
+            <!-- data-dificuldade = id_dificuldade no banco (1 Fácil, 2 Médio, 3 Difícil). Sem escolher, vale qualquer dificuldade. -->
+            <button type="button" class="btn-dificuldade btn-1" data-dificuldade="1">Facil</button>
+            <button type="button" class="btn-dificuldade btn-2" data-dificuldade="2">Medio</button>
+            <button type="button" class="btn-dificuldade btn-3" data-dificuldade="3">Dificil</button>
         </div>
     </footer>
 
+    <script src="../api.js"></script>
     <script src="background.js"></script>
+    <script src="categoria.js"></script>
 </body>
 </html>

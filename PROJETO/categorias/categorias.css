@@ -1,5 +1,6 @@
 
 @import url("https://db.onlinewebfonts.com/c/8ac6d61c270feef80b9ad082aa94e533?family=Kyiv%2AType+Titling");
+@import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
 
 /* RESET */
 * {
@@ -113,7 +114,7 @@ body > * {
   overflow-wrap: anywhere;
 }
 
-#btn-entrar {
+.btn-entrar {
   width: 120px;
   height: 30px;
   border: 1px solid #000;
@@ -123,8 +124,30 @@ body > * {
   cursor: pointer;
 }
 
-#btn-entrar:hover{
+.btn-entrar:hover{
     background-color: #242424;
+}
+
+.btn-entrar:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-entrar:disabled:hover {
+  background-color: #666666;
+}
+
+.categoria-total {
+  font-family: var(--font-secundaria);
+  font-size: 13px;
+  color: #333;
+}
+
+.status-categorias {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--cor-branco);
+  font-family: var(--fonte-principal);
 }
 
 /* RODAPÉ / DIFICULDADES */
@@ -147,7 +170,7 @@ body > * {
   text-transform: uppercase;
 }
 
-#btn-dificuldade {
+.btn-dificuldade {
   width: 180px;
   max-width: 100%;
   height: 35px;
@@ -156,9 +179,14 @@ body > * {
   cursor: pointer;
 }
 
-#btn-dificuldade:hover {
+.btn-dificuldade:hover {
     background-color: #666666;
     color: var(--cor-branco);
+}
+
+.btn-dificuldade.selecionada {
+  box-shadow: 0 0 0 3px #000;
+  font-weight: 700;
 }
 
 .btn-1{

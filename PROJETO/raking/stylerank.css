@@ -1,4 +1,16 @@
 @import url("https://db.onlinewebfonts.com/c/8ac6d61c270feef80b9ad082aa94e533?family=Kyiv%2AType+Titling");
+@import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
+
+#ranking-status { position: relative; z-index: 1; text-align: center; margin: 20px auto; max-width: 900px; }
+.list-jogador h1, .raking h2 { overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+    .class-jogadores { gap: 10px !important; padding: 20px 12px 0 !important; }
+    .list-jogador { min-width: 0; width: 30% !important; }
+    .barra-ranking h3 { font-size: 12px !important; }
+    .raking { grid-template-columns: 25px 40px minmax(0, 1fr) 75px !important; gap: 8px !important; padding: 10px !important; }
+    .raking img { width: 40px !important; height: 40px !important; }
+    .cabecalho h1 { font-size: 18px !important; margin-left: 75px; padding: 12px !important; }
+}
 
 /* =========================
    RESET

@@ -1,0 +1,5 @@
+.conta-barra { position: relative; z-index: 2; display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 12px; padding: 12px 20px; color: #fff; background: #102431; font: 14px Arial, sans-serif; width: 100%; }
+.conta-barra span { margin-right: auto; overflow-wrap: anywhere; }
+.conta-barra a { color: #e1f4ff; }
+.conta-barra button { cursor: pointer; border: 1px solid #b5d3e2; border-radius: 7px; padding: 7px 14px; background: transparent; color: white; font: inherit; }
+.conta-barra :focus-visible { outline: 3px solid #8ad0ff; outline-offset: 3px; }

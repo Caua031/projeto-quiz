@@ -1,5 +1,5 @@
 -- 04-ddl.sql — Tech Trivia (modelo físico)
--- Equipe: Cauã, Raphael, Henrick
+-- Equipe: Cauã, Raphael, Henrick, Murilo
 -- PostgreSQL: SGBD relacional que garante integridade por PK, FK, UNIQUE e CHECK
 --             e executa o script em transação (RNF01 e RNF02).
 -- Contrato com Aplicativos para Web: os nomes de tabelas e colunas abaixo

@@ -1,5 +1,5 @@
 -- 04-ddl.sql — Tech Trivia (modelo físico)
--- Equipe: Cauã, Raphael, Henrick, Murilo
+-- Equipe: Cauã, Raphael, Henrick, Nicollas
 -- PostgreSQL: SGBD relacional que garante integridade por PK, FK, UNIQUE e CHECK
 --             e executa o script em transação (RNF01 e RNF02).
 -- Contrato com Aplicativos para Web: os nomes de tabelas e colunas abaixo
@@ -21,7 +21,7 @@
 -- As configurações de rodada ficam em Servidor/configuracoes.json, fora do banco.
 
 -- Nomes de chaves: id_<tabela> nas chaves artificiais. Exceções justificadas
--- (identificador natural): pergunta.codigo (fact-001, RD08 do .docx) e fonte.url.
+-- (identificador natural): pergunta.codigo (fact-001, RD08 do .docx), fonte.url e sessao_login.token_hash (o resumo do token identifica a sessão).
 -- Chave estrangeira para chave artificial tem o mesmo nome da PK referenciada
 -- (ex.: pergunta.id_categoria). Para chave natural: fonte_url, pergunta_codigo.
 
@@ -29,7 +29,7 @@ SET client_encoding = 'UTF8';
 
 BEGIN;
 
-
+-- 1 — tabelas que não dependem de nenhuma outra
 -- Categoria temática da pergunta. Nome único.
 CREATE TABLE categoria (
     id_categoria INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -37,7 +37,7 @@ CREATE TABLE categoria (
     CONSTRAINT categoria_nome_uq UNIQUE (nome)
 );
 
--- Nível de dificuldade da pergunta . Domínio fixo de 3 valores.
+-- Nível de dificuldade da pergunta (RD03). Domínio fixo de 3 valores.
 CREATE TABLE dificuldade (
     id_dificuldade INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     descricao      VARCHAR(20) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE publicador (
     CONSTRAINT publicador_nome_uq UNIQUE (nome)
 );
 
--- Palavra-chave cadastrada uma única vez .
+-- Palavra-chave cadastrada uma única vez.
 CREATE TABLE palavra_chave (
     id_palavra_chave INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     termo            VARCHAR(80) NOT NULL,
@@ -74,6 +74,7 @@ CREATE TABLE jogador (
     nome       VARCHAR(80) NOT NULL
 );
 
+--  2 — fonte e pergunta (primeiras chaves estrangeiras)
 -- Referência bibliográfica. A URL é a chave primária natural,
 -- logo não se repete. Cada fonte tem um publicador e um idioma.
 CREATE TABLE fonte (
@@ -105,9 +106,12 @@ CREATE TABLE pergunta (
         REFERENCES fonte (url)
 );
 
+-- 3 — alternativa e pergunta_palavra_chave
+
 -- Alternativa de uma pergunta. A letra identifica a alternativa
 -- dentro da pergunta. A coluna "correta" marca a alternativa certa.
 -- ON DELETE CASCADE: alternativa não existe sem a pergunta; ao excluir a
+-- pergunta, suas alternativas saem junto.
 CREATE TABLE alternativa (
     id_alternativa  INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     pergunta_codigo VARCHAR(20) NOT NULL,
@@ -140,6 +144,7 @@ CREATE TABLE pergunta_palavra_chave (
         REFERENCES palavra_chave (id_palavra_chave) ON DELETE CASCADE
 );
 
+-- 4 — quiz, quiz_pergunta e pontuacao
 -- Quiz = uma tentativa de um jogador. Um jogador pode ter várias.
 -- Sem CASCADE: um jogador que já jogou não pode ser excluído por engano.
 CREATE TABLE quiz (
@@ -151,9 +156,7 @@ CREATE TABLE quiz (
 
 -- Associação N:N entre quiz e pergunta: a mesma pergunta pode
 -- aparecer em quizzes diferentes. A linha é só um vínculo, então
--- ON DELETE CASCADE nos dois lados (decisão fora do dicionário; mesma
--- lógica de pergunta_palavra_chave). Excluir uma pergunta remove
--- o vínculo, nunca o quiz nem a pontuação.
+-- ON DELETE CASCADE nos dois lados (decisão fora do dicionário; mesma lógica de pergunta_palavra_chave). Excluir uma pergunta remove o vínculo, nunca o quiz nem a pontuação. (A API, pela RD18, recusa excluir uma pergunta que já fez parte de uma tentativa.)
 CREATE TABLE quiz_pergunta (
     id_quiz         INTEGER     NOT NULL,
     pergunta_codigo VARCHAR(20) NOT NULL,
@@ -176,6 +179,8 @@ CREATE TABLE pontuacao (
     CONSTRAINT pontuacao_quiz_fk FOREIGN KEY (id_quiz)
         REFERENCES quiz (id_quiz)
 );
+
+-- 5 — contas com senha e acesso autenticado
 
 -- Um perfil de jogador pode possuir zero ou uma conta: perfis antigos podem
 -- receber login pelo painel sem perder seus pontos. O nome de exibição fica
@@ -210,8 +215,7 @@ CREATE INDEX sessao_login_expira_idx ON sessao_login(expira_em);
 -- Domínio fixo.
 INSERT INTO dificuldade (descricao) VALUES ('Fácil'), ('Médio'), ('Difícil');
 
--- ATENÇÃO: o doc_date não lista os idiomas. Português e Inglês são suposição;
--- ajustar se a equipe usar outros.
+-- Domínio fixo.
 INSERT INTO idioma (descricao) VALUES ('Português'), ('Inglês');
 
 COMMIT;

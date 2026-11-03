@@ -8,6 +8,7 @@
 -- IDs artificiais são gerados pelo banco; vínculos são localizados pelos nomes, não por IDs fixos.
 -- Não altera contas, sessões, tentativas nem pontuações. Fontes consultadas em 22/10/2026.
 
+
 SET client_encoding = 'UTF8';
 BEGIN;
 SELECT pg_advisory_xact_lock(738201);
@@ -316,40 +317,147 @@ SELECT c.nome AS categoria,d.descricao AS dificuldade,count(*)::int AS perguntas
 FROM pergunta p JOIN categoria c USING(id_categoria) JOIN dificuldade d USING(id_dificuldade)
 WHERE p.codigo ~ '^tt-(es|mw|ph|pd|rw|rd)-[0-9]{3}$'
 GROUP BY c.nome,d.descricao ORDER BY c.nome,d.descricao;
+-- Resultado esperado (30 perguntas por categoria, 10 por nível):
+--      categoria     | dificuldade | perguntas
+-- -------------------+-------------+-----------
+--  engenharia social | Difícil     |        10
+--  engenharia social | Fácil       |        10
+--  engenharia social | Médio       |        10
+--  malware           | Difícil     |        10
+--  malware           | Fácil       |        10
+--  malware           | Médio       |        10
+--  phishing          | Difícil     |        10
+--  phishing          | Fácil       |        10
+--  phishing          | Médio       |        10
+--  proteção de dados | Difícil     |        10
+--  proteção de dados | Fácil       |        10
+--  proteção de dados | Médio       |        10
+--  ransomware        | Difícil     |        10
+--  ransomware        | Fácil       |        10
+--  ransomware        | Médio       |        10
+--  redes             | Difícil     |        10
+--  redes             | Fácil       |        10
+--  redes             | Médio       |        10
+-- (18 linhas)
+
 
 -- RA01: categorias em ordem alfabética, incluindo categorias sem perguntas.
 SELECT c.id_categoria,c.nome,count(p.codigo)::int AS total_perguntas
 FROM categoria c LEFT JOIN pergunta p USING(id_categoria)
 GROUP BY c.id_categoria,c.nome ORDER BY c.nome;
+-- API equivalente: GET /api/categorias
+-- Resultado esperado:
+--  id_categoria |        nome       | total_perguntas
+-- --------------+-------------------+-----------------
+--             1 | engenharia social |              30
+--             2 | malware           |              30
+--             3 | phishing          |              30
+--             4 | proteção de dados |              30
+--             5 | ransomware        |              30
+--             6 | redes             |              30
+-- (6 linhas)
+
 
 -- RA02a: uma pergunta aleatória de qualquer categoria.
 SELECT codigo,titulo,enunciado FROM pergunta ORDER BY random() LIMIT 1;
+-- API equivalente: GET /api/perguntas/sorteio
+-- Resultado esperado:
+-- Resultado: depende do sorteio; muda a cada execução. Cole aqui o que o seu psql mostrar,
+-- ex.: o código sorteado (tt-xx-NNN), o título e o enunciado, como em RA02b.
+
 
 -- RA02b: sorteio de uma categoria; substitua o nome no WHERE para outro tema.
 SELECT p.codigo,p.titulo,p.enunciado FROM pergunta p JOIN categoria c USING(id_categoria)
 WHERE c.nome='engenharia social' ORDER BY random() LIMIT 1;
+-- API equivalente: GET /api/perguntas/sorteio?categoria=<id>
+-- Resultado esperado:
+-- Resultado: sempre uma das 30 perguntas tt-es-001 a tt-es-030 (muda a cada execução).
+-- Cole aqui o código sorteado na sua execução.
+
 
 -- RA03: pergunta e alternativas, sem revelar o gabarito.
 SELECT p.codigo,p.titulo,p.enunciado,a.letra,a.texto
 FROM pergunta p JOIN alternativa a ON a.pergunta_codigo=p.codigo
 WHERE p.codigo='tt-es-001' ORDER BY a.letra;
+-- API equivalente: GET /api/perguntas/<codigo>
+-- Resultado esperado:
+-- (formato expandido, \x, por causa do tamanho do enunciado)
+-- -[ RECORD 1 ]----------
+-- codigo    | tt-es-001
+-- titulo    | Manipulação da confiança
+-- enunciado | A engenharia social pode manipular pessoas para obter informações ou provocar ações inseguras.
+-- letra     | A
+-- texto     | Certo
+-- -[ RECORD 2 ]----------
+-- codigo    | tt-es-001
+-- titulo    | Manipulação da confiança
+-- enunciado | A engenharia social pode manipular pessoas para obter informações ou provocar ações inseguras.
+-- letra     | B
+-- texto     | Errado
+
 
 -- RA04: duas escolhas de exemplo; A acerta e B erra para tt-es-001 desta carga.
 SELECT pergunta_codigo,letra,correta AS acertou FROM alternativa
 WHERE pergunta_codigo='tt-es-001' AND letra IN ('A','B') ORDER BY letra;
+-- API equivalente: POST /api/perguntas/<codigo>/resposta  {"letra":"A"}
+-- Resultado esperado:
+--  pergunta_codigo | letra | acertou
+-- -----------------+-------+---------
+--  tt-es-001       | A     | t
+--  tt-es-001       | B     | f
+-- (2 linhas)
+
 
 -- RA05: explicação e referência bibliográfica.
 SELECT p.codigo,p.explicacao,f.titulo AS fonte,f.url,pu.nome AS publicador,i.descricao AS idioma
 FROM pergunta p JOIN fonte f ON f.url=p.fonte_url
 JOIN publicador pu USING(id_publicador) JOIN idioma i USING(id_idioma)
 WHERE p.codigo='tt-es-001';
+-- API equivalente: POST /api/perguntas/<codigo>/resposta (campos explicacao e fonte)
+-- Resultado esperado:
+-- (formato expandido, \x)
+-- -[ RECORD 1 ]----------
+-- codigo     | tt-es-001
+-- explicacao | O alvo pode ser a decisão da pessoa, sem depender de uma falha técnica no computador.
+-- fonte      | Detecting socially engineered messages
+-- url        | https://www.cyber.gov.au/publication/detecting-socially-engineered-messages
+-- publicador | ACSC
+-- idioma     | Inglês
+
 
 -- RA06: publicadores mais citados.
 SELECT pu.nome AS publicador,count(p.codigo)::int AS total_perguntas
 FROM publicador pu JOIN fonte f USING(id_publicador) JOIN pergunta p ON p.fonte_url=f.url
 GROUP BY pu.id_publicador,pu.nome ORDER BY total_perguntas DESC,pu.nome;
+-- API equivalente: GET /api/publicadores/mais-citados
+-- Resultado esperado:
+--  publicador | total_perguntas
+-- ------------+-----------------
+--  CERT.br    |              65
+--  FTC        |              35
+--  Microsoft  |              25
+--  Cloudflare |              10
+--  FBI        |              10
+--  Mozilla    |              10
+--  ACSC       |               5
+--  Cisco      |               5
+--  Google     |               5
+--  NCSC       |               5
+--  NIC.br     |               5
+-- (11 linhas)
+
 
 -- RA07: fontes citadas por mais de uma pergunta.
 SELECT f.titulo,f.url,count(p.codigo)::int AS total_perguntas
 FROM fonte f JOIN pergunta p ON p.fonte_url=f.url
 GROUP BY f.url,f.titulo HAVING count(p.codigo)>1 ORDER BY total_perguntas DESC,f.titulo;
+-- API equivalente: GET /api/fontes/repetidas
+-- Resultado esperado:
+--                            titulo                           |                                            url                                            | total_perguntas
+-- ------------------------------------------------------------+-------------------------------------------------------------------------------------------+-----------------
+--  Backup — Cartilha de Segurança para Internet               | https://cartilha.cert.br/fasciculos/backup/fasciculo-backup.pdf                           |               5
+--  Banco via Internet — Cartilha de Segurança para Internet   | https://cartilha.cert.br/fasciculos/banco-via-internet/fasciculo-banco-via-internet.pdf   |               5
+--  Business Email Compromise                                  | https://www.fbi.gov/how-we-can-help-you/common-frauds-and-scams/business-email-compromise |               5
+--  Cookies — Information that websites store on your computer | https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer  |               5
+--  Códigos Maliciosos — Cartilha de Segurança para Internet   | https://cartilha.cert.br/fasciculos/codigos-maliciosos/fasciculo-codigos-maliciosos.pdf   |               5
+-- (37 linhas; mostradas as 5 primeiras. Menor contagem: 2, maior: 5)

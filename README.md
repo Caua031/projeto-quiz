@@ -78,3 +78,4 @@ A documentação completa fica em `PROJETO/doc_date`: contexto e requisitos, mod
 ## Qualidade
 
 O servidor tem scripts de teste para as rotas de administração e de perguntas, que rodam contra um banco real.
+Site: [projeto-quiz-kiu4.onrender.com/](https://projeto-quiz-kiu4.onrender.com/)

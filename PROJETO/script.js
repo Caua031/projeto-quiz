@@ -53,6 +53,21 @@ function mostrarAviso(texto) {
     botaoCategorias.style.display = "inline-block";
 }
 
+// Na tela do quiz fica só um botão "Sair", que volta para a escolha de categoria
+// (não encerra o login; para isso existe a barra completa da tela de categorias).
+function mostrarBotaoSair() {
+    if (document.querySelector('.conta-barra')) return;
+    const barra = document.createElement('nav');
+    barra.className = 'conta-barra conta-barra-minima';
+    const sair = document.createElement('button');
+    sair.type = 'button';
+    sair.textContent = 'Sair';
+    sair.setAttribute('aria-label', 'Sair do quiz e voltar para as categorias');
+    sair.addEventListener('click', () => { window.location.href = './categorias/categoria.html'; });
+    barra.append(sair);
+    document.body.prepend(barra);
+}
+
 async function startQuiz() {
     currentQuestionIndex = 0;
     respostasRodada = [];
@@ -71,7 +86,7 @@ async function startQuiz() {
         const jogador = await exigirConta();
         if (!jogador) return;
         carregarPerfilJogador(jogador);
-        if (!document.querySelector('.conta-barra')) mostrarConta(jogador);
+        mostrarBotaoSair();
         const jogo = await api('/jogos', { method: 'POST', body: JSON.stringify({
             categoria: /^\d+$/.test(filtroCategoria || '') ? Number(filtroCategoria) : null,
             dificuldade: /^\d+$/.test(filtroDificuldade || '') ? Number(filtroDificuldade) : null,

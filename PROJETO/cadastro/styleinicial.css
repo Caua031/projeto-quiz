@@ -1,4 +1,5 @@
 @import url("https://db.onlinewebfonts.com/c/8ac6d61c270feef80b9ad082aa94e533?family=Kyiv%2AType+Titling");
+@import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
 
 
 /* RESET */
@@ -223,3 +224,23 @@ body {
     0%, 100% { box-shadow: 0 0 0 0 rgba(174, 223, 242, 0.4); }
     50%      { box-shadow: 0 0 0 12px rgba(174, 223, 242, 0); }
 }
+
+/* Login e cadastro usam o mesmo cartão e funcionam também em telas baixas. */
+body { flex-direction: column; overflow: auto; padding: 32px 16px; gap: 28px; }
+.principal { position: relative; top: auto; z-index: 1; text-align: center; max-width: 900px; }
+.principal h1 { font-size: clamp(20px, 4vw, 32px); }
+.cadastro { width: min(100%, 500px); padding: 28px; }
+.cadastro h1 { margin: 24px 0 18px; font-size: 22px; }
+.cadastro input { width: 100%; height: 44px; margin: 6px 0 16px; text-transform: none; font: 16px Arial, sans-serif; padding: 8px 12px; text-align: left; }
+.cadastro label { display: block; text-align: left; font: 14px Arial, sans-serif; color: #f5fbff; }
+.cadastro [hidden] { display: none !important; }
+#proximo-btn { width: 100%; padding: 12px; margin-top: 12px; font: 17px Arial, sans-serif; }
+#proximo-btn:disabled { opacity: .65; cursor: wait; }
+.auth-abas { display: flex; gap: 10px; margin-bottom: 24px; }
+.auth-abas button { flex: 1; padding: 12px; border: 1px solid #89b7c8; border-radius: 8px; background: transparent; color: white; cursor: pointer; font: 16px Arial, sans-serif; }
+.auth-abas button[aria-pressed=true] { background: #3f6e7a; }
+.auth-ajuda { color: #c8d9e2; text-align: left; font: 13px/1.5 Arial, sans-serif; }
+#status-acesso { color: #ffe2a5; font: 14px/1.5 Arial, sans-serif; min-height: 22px; }
+.cadastro :focus-visible, .modal-avatares :focus-visible { outline: 3px solid #9edcff; outline-offset: 3px; }
+.lista-fotos { flex-wrap: wrap; }
+.modal-conteudo { max-width: calc(100% - 32px); }

@@ -1,4 +1,5 @@
 @import url("https://db.onlinewebfonts.com/c/8ac6d61c270feef80b9ad082aa94e533?family=Kyiv%2AType+Titling");
+@import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
 
 /* RESET */
 * {
@@ -31,7 +32,8 @@ body {
         radial-gradient(ellipse at 50% 45%, rgba(63, 110, 122, 0.25) 0%, transparent 60%),
         linear-gradient(135deg, #07121c 0%, #0d2233 50%, #123248 100%);
     background-attachment: fixed;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto; /* a explicação da resposta pode passar da altura da tela */
 }
 
 
@@ -197,7 +199,8 @@ body {
 
 .container {
     width: auto;
-    height: 200px;
+    min-height: 200px; /* cresce para caber explicação e fonte */
+    padding-bottom: 20px;
     border-radius: 10px;
     border: 1px solid #000000;
     margin-top: 80px;
@@ -243,4 +246,27 @@ body {
 .buttons:hover {
     color: #000000;
     background-color: var(--cor-fundo-azul-escuro);
+}
+/* EXPLICAÇÃO E FONTE (vêm da API depois de responder) */
+.container .explicacao {
+    font-family: var(--fonte-principal);
+    font-size: 16px;
+    line-height: 1.45;
+    text-transform: none;
+    max-width: 60em;
+    margin: 14px auto 0;
+    padding: 0 20px;
+}
+
+.container .fonte {
+    font-family: var(--font-secundaria);
+    font-size: 13px;
+    text-transform: none;
+    margin-top: 12px;
+    padding: 0 20px;
+}
+
+.container .fonte a {
+    color: inherit;
+    text-decoration: underline;
 }

@@ -1,106 +1,16 @@
-const quiz = [
-    {
-        question: "Qual foi um dos primeiros programas autorreplicantes conhecidos na história da computação?",
-        perguntas: [
-            { id: 1, text: "Creeper", correct: true },
-            { id: 2, text: "ILOVEYOU", correct: false },
-            { id: 3, text: "WannaCry", correct: false },
-            { id: 4, text: "Stuxnet", correct: false },
-        ],  
-    },
-    {
-        question: "Qual é uma das principais causas de falhas de segurança da informação?",
-        perguntas: [
-            { id: 1, text: "Uso de sistemas operacionais modernos", correct: false },
-            { id: 2, text: "Engenharia social e falha humana", correct: true },
-            { id: 3, text: "Uso de criptografia forte", correct: false },
-            { id: 4, text: "Configuração correta de firewalls", correct: false },
-        ],  
-    },    
-    {
-        question: "Qual hacker ficou conhecido por ter sido um dos cibercriminosos mais procurados pelo FBI?",
-        perguntas: [
-            { id: 1, text: "Linus Torvalds", correct: false },
-            { id: 2, text: "Kevin Mitnick", correct: true },
-            { id: 3, text: "Edward Snowden", correct: false },
-            { id: 4, text: "Tim Berners-Lee", correct: false },
-        ],  
-    },
-    {
-        question: "Quais estão entre as senhas mais utilizadas em levantamentos de senhas vazadas?",
-        perguntas: [
-            { id: 1, text: "Senha@2026!", correct: false },
-            { id: 2, text: "123456 e password", correct: true },
-            { id: 3, text: "xPtO#992", correct: false },
-            { id: 4, text: "MinhaSenhaDificil12", correct: false },
-        ],  
-    },
-    {
-        question: "O que significa o termo 'phishing'?",
-        perguntas: [
-            { id: 1, text: "Um tipo de firewall de nova geração", correct: false },
-            { id: 2, text: "Técnica de engenharia social para roubar dados confidenciais", correct: true },
-            { id: 3, text: "Uma técnica de criptografia assimétrica", correct: false },
-            { id: 4, text: "O ato de limpar o cache do navegador", correct: false },
-        ],  
-    },
-    {
-        question: "Qual foi um dos maiores ataques de ransomware em escala global?",
-        perguntas: [
-            { id: 1, text: "Stuxnet", correct: false },
-            { id: 2, text: "WannaCry", correct: true },
-            { id: 3, text: "Creeper", correct: false },
-            { id: 4, text: "Morris Worm", correct: false },
-        ],  
-    },
-    {
-        question: "Como o malware Stuxnet (2010) se diferenciou de grande parte dos malwares tradicionais?",
-        perguntas: [
-            { id: 1, text: "Ele apenas exibia mensagens na tela", correct: false },
-            { id: 2, text: "Alvo específico em sistemas industriais físicos (centrifugadoras nucleares)", correct: true },
-            { id: 3, text: "Ele infectava apenas dispositivos móveis Android", correct: false },
-            { id: 4, text: "Foi criado para minerar criptomoedas", correct: false },
-        ],  
-    },
-    {
-        question: "Qual é a principal função de um sistema configurado como Honeypot em uma estratégia de segurança da informação?",
-        perguntas: [
-            { id: 1, text: "Bloquear totalmente o tráfego da rede", correct: false },
-            { id: 2, text: "Atrair e detectar atacantes em um ambiente controlado", correct: true },
-            { id: 3, text: "Armazenar senhas de forma criptografada", correct: false },
-            { id: 4, text: "Realizar o backup automático dos servidores", correct: false },
-        ],  
-    },
-    {
-        question: "Qual é a principal característica da Arquitetura Zero Trust (ZTA)?",
-        perguntas: [
-            { id: 1, text: "Confiar automaticamente em qualquer dispositivo interno", correct: false },
-            { id: 2, text: "Nunca confiar, sempre verificar a identidade e o acesso", correct: true },
-            { id: 3, text: "Eliminar a necessidade de senhas no sistema", correct: false },
-            { id: 4, text: "Permitir acesso total a administradores sem autenticação", correct: false },
-        ],  
-    },     
-    {
-        question: "O que é malware?",
-        perguntas: [
-            { id: 1, text: "Um hardware danificado", correct: false },
-            { id: 2, text: "Qualquer software intencionalmente desenvolvido para causar danos", correct: true },
-            { id: 3, text: "Um programa de proteção contra vírus", correct: false },
-            { id: 4, text: "Uma ferramenta de otimização de sistema", correct: false },
-        ],  
-    },     
-    {
-        question: "O que é ransomware?",
-        perguntas: [
-            { id: 1, text: "Um antivírus pago", correct: false },
-            { id: 2, text: "Malware que criptografa dados e exige resgate", correct: true },
-            { id: 3, text: "Um ataque que derruba servidores web por sobrecarga", correct: false },
-            { id: 4, text: "Um cabo de rede de alta segurança", correct: false },
-        ],  
-    },
-];
+// script.js — tela do quiz.
+// As perguntas e a correção vêm da API (Express + PostgreSQL); nada de pergunta fica fixo aqui.
+// Filtros opcionais pela URL (a tela de categorias monta isso): index.html?categoria=1&dificuldade=2
 
+let pontosPorAcerto = 1000;
+let idQuiz = null;
+let respostasRodada = [];
+let resultadoSalvo = false;
 const numeroImagens = ["um-amarelo.png", "dois-amarelo.png", "tres-amarelo.png", "quatro-amarelo.png"];
+
+const parametros = new URLSearchParams(window.location.search);
+const filtroCategoria = parametros.get("categoria");
+const filtroDificuldade = parametros.get("dificuldade");
 
 const questionElement = document.getElementById("question");
 const answerButtons = document.querySelector(".answer-btn");
@@ -108,51 +18,85 @@ const nextButton = document.getElementById("next-btn");
 const feedbackContainer = document.querySelector(".container");
 const feedbackTitle = document.querySelector(".container h1");
 const feedbackSubtitle = document.querySelector(".container h2");
+const feedbackExplicacao = document.getElementById("explicacao");
+const feedbackFonte = document.getElementById("fonte");
 const headerTitle = document.querySelector(".quiz h1");
 const scoreElement = document.querySelector(".pontos");
 const progressContainer = document.getElementById("progress");
 const botaoRaking = document.getElementById("raking-jogador");
+const botaoCategorias = document.getElementById("voltar-categorias");
 
-// === NOVA PARTE: CARREGAR PERFIL DO JOGADOR NO QUIZ ===
-function carregarPerfilJogador() {
-    const dadosSalvos = localStorage.getItem('jogadorAtual');
-    
-    if (dadosSalvos) {
-        const jogador = JSON.parse(dadosSalvos);
+// === CARREGAR PERFIL DO JOGADOR NO QUIZ ===
+function carregarPerfilJogador(jogador) {
+    const fotoPerfilQuiz = document.querySelector(".perfil img");
+    const nomePerfilQuiz = document.querySelector(".perfil h1");
 
-        const fotoPerfilQuiz = document.querySelector(".perfil img"); 
-        const nomePerfilQuiz = document.querySelector(".perfil h1"); 
-
-        if (fotoPerfilQuiz) {
-            fotoPerfilQuiz.src = jogador.foto;
-        }
-        if (nomePerfilQuiz) {
-            nomePerfilQuiz.innerText = jogador.nome;
-        }
-    }
+    if (fotoPerfilQuiz) fotoPerfilQuiz.src = jogador.foto;
+    if (nomePerfilQuiz) nomePerfilQuiz.innerText = jogador.nome;
 }
-
-carregarPerfilJogador();
 // ======================================================
 
+let codigosRodada = [];   // códigos (fact-001, ...) sorteados para esta rodada
 let currentQuestionIndex = 0;
+let perguntaAtual = null; // pergunta já carregada, com as alternativas (a API NÃO manda o gabarito)
 let score = 0;
+let ocupado = false;      // evita clique duplo enquanto espera o servidor
 
-function startQuiz() {
+// Tela de aviso: sem perguntas para o filtro, ou erro ao falar com o servidor
+function mostrarAviso(texto) {
+    resetState();
+    progressContainer.innerHTML = "";
+    headerTitle.textContent = "tech trivia";
+    questionElement.textContent = texto;
+    nextButton.style.display = "none";
+    botaoRaking.style.display = "none";
+    botaoCategorias.style.display = "inline-block";
+}
+
+async function startQuiz() {
     currentQuestionIndex = 0;
+    respostasRodada = [];
+    resultadoSalvo = false;
     score = 0;
+    ocupado = true;
     nextButton.innerHTML = "Próximo";
     nextButton.style.display = "none";
     botaoRaking.style.display = "none";
-    
-    // Cria as barrinhas de progresso com base no tamanho real do array 'quiz'
+    botaoCategorias.style.display = "none";
+    scoreElement.textContent = "pontos: 0";
+    resetState();
+    questionElement.textContent = "Carregando perguntas...";
+
+    try {
+        const jogador = await exigirConta();
+        if (!jogador) return;
+        carregarPerfilJogador(jogador);
+        if (!document.querySelector('.conta-barra')) mostrarConta(jogador);
+        const jogo = await api('/jogos', { method: 'POST', body: JSON.stringify({
+            categoria: /^\d+$/.test(filtroCategoria || '') ? Number(filtroCategoria) : null,
+            dificuldade: /^\d+$/.test(filtroDificuldade || '') ? Number(filtroDificuldade) : null,
+        }) });
+        codigosRodada = jogo.codigos;
+        idQuiz = jogo.id_quiz;
+        pontosPorAcerto = jogo.pontos_por_acerto;
+    } catch (erro) {
+        ocupado = false;
+        return mostrarAviso(erro.message);
+    }
+
+    if (codigosRodada.length === 0) {
+        ocupado = false;
+        return mostrarAviso("Ainda não há perguntas para essa combinação de categoria e dificuldade.");
+    }
+
+    // Cria as barrinhas de progresso com base no tamanho real da rodada
     createProgressBars();
-    showQuestion();
+    await showQuestion();
 }
 
 function createProgressBars() {
     progressContainer.innerHTML = ""; // Limpa as barras antigas
-    for (let i = 0; i < quiz.length; i++) {
+    for (let i = 0; i < codigosRodada.length; i++) {
         const barra = document.createElement("div");
         barra.classList.add("barra");
         progressContainer.appendChild(barra);
@@ -160,8 +104,8 @@ function createProgressBars() {
 }
 
 function updateHeaderAndProgress() {
-    headerTitle.innerHTML = `pergunta ${currentQuestionIndex + 1}/${quiz.length}`;
-    scoreElement.innerHTML = `pontos: ${score * 1000}`;
+    headerTitle.textContent = `pergunta ${currentQuestionIndex + 1}/${codigosRodada.length}`;
+    scoreElement.textContent = `pontos: ${score * pontosPorAcerto}`;
 
     // Captura as barras que foram geradas dinamicamente
     const barraProgressos = document.querySelectorAll("#progress .barra");
@@ -174,65 +118,121 @@ function updateHeaderAndProgress() {
     });
 }
 
-function showQuestion() {
+async function showQuestion() {
     resetState();
     updateHeaderAndProgress();
+    ocupado = true;
+    questionElement.textContent = "Carregando pergunta...";
 
-    let currentQuestion = quiz[currentQuestionIndex];
-    let questionNo = currentQuestionIndex + 1;
-    questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+    try {
+        // RA03: enunciado + alternativas (sem o gabarito)
+        perguntaAtual = await api(`/perguntas/${encodeURIComponent(codigosRodada[currentQuestionIndex])}`);
+    } catch (erro) {
+        ocupado = false;
+        return mostrarAviso(erro.message);
+    }
 
-    currentQuestion.perguntas.forEach((resposta, index) => {
+    questionElement.textContent = `${currentQuestionIndex + 1}. ${perguntaAtual.enunciado}`;
+
+    perguntaAtual.alternativas.forEach((alternativa, index) => {
         const button = document.createElement("button");
         button.classList.add("btn");
+        button.dataset.letra = alternativa.letra;
 
         const img = document.createElement("img");
-        img.src = `imagens/${numeroImagens[index]}`;
+        img.src = `imagens/${numeroImagens[index % numeroImagens.length]}`;
         img.alt = `Numero ${index + 1}`;
 
         const span = document.createElement("span");
-        span.innerHTML = resposta.text;
+        span.textContent = alternativa.texto;
 
         button.appendChild(img);
         button.appendChild(span);
         answerButtons.appendChild(button);
 
-        if (resposta.correct) {
-            button.dataset.correct = resposta.correct;
-        }
-        
         button.addEventListener("click", selectAnswer);
     });
+
+    ocupado = false;
 }
 
 function resetState() {
     nextButton.style.display = "none";
     feedbackContainer.style.display = "none";
     feedbackContainer.classList.remove("mostrar", "correct", "incorrect"); // Remove a classe de animação
+    feedbackExplicacao.textContent = "";
+    feedbackFonte.textContent = "";
     while (answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);
     }
 }
 
-function selectAnswer(e) {
-    const selectedBtn = e.target.closest('.btn');
-    const isCorrect = selectedBtn.dataset.correct === "true";
+// RA05: explicação + fonte (título com link, publicador e idioma)
+function mostrarExplicacao(resultado) {
+    feedbackExplicacao.textContent = resultado.explicacao;
 
-    if (isCorrect) {
+    const { titulo, url, publicador, idioma } = resultado.fonte;
+    feedbackFonte.textContent = "Fonte: ";
+    if (/^https?:\/\//i.test(url)) {
+        const link = document.createElement("a");
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = titulo;
+        feedbackFonte.appendChild(link);
+    } else {
+        feedbackFonte.append(titulo);
+    }
+    feedbackFonte.append(` — ${publicador} (${idioma})`);
+}
+
+// RA04: quem diz se acertou é o servidor; o gabarito nunca vai para o navegador antes da resposta
+async function selectAnswer(e) {
+    if (ocupado) return;
+    const selectedBtn = e.target.closest(".btn");
+    const botoes = Array.from(answerButtons.children);
+
+    ocupado = true;
+    botoes.forEach((b) => (b.disabled = true));
+
+    let resultado;
+    try {
+        resultado = await api(`/perguntas/${encodeURIComponent(perguntaAtual.codigo)}/resposta`, {
+            method: "POST",
+            body: JSON.stringify({ letra: selectedBtn.dataset.letra }),
+        });
+    } catch (erro) {
+        // deixa o jogador tentar de novo
+        botoes.forEach((b) => (b.disabled = false));
+        ocupado = false;
+        alert(erro.message);
+        return;
+    }
+
+    respostasRodada.push({ codigo: perguntaAtual.codigo, letra: selectedBtn.dataset.letra });
+    if (resultado.acertou) {
         selectedBtn.classList.add("correct");
         feedbackContainer.classList.add("correct");
         score++;
-        
-        feedbackTitle.innerHTML = "PARABÉNS!";
-        feedbackSubtitle.innerHTML = "AAAAAAAAAAAAAAAAAAAH! QUE ACERTO";
 
+        feedbackTitle.textContent = "PARABÉNS!";
+        feedbackSubtitle.textContent = "AAAAAAAAAAAAAAAAAAAH! QUE ACERTO";
     } else {
         selectedBtn.classList.add("incorrect");
-        feedbackContainer.classList.add("incorrect"); // fundo vermelho em teste
-        
-        feedbackTitle.innerHTML = "QUE PENA!";
-        feedbackSubtitle.innerHTML = "VOCÊ ERROU ESSA QUESTÃO";
+        feedbackContainer.classList.add("incorrect");
+
+        feedbackTitle.textContent = "QUE PENA!";
+        feedbackSubtitle.textContent = "VOCÊ ERROU ESSA QUESTÃO";
     }
+
+    // Destaca a alternativa correta
+    botoes.forEach((button) => {
+        if (button.dataset.letra === resultado.alternativa_correta.letra) {
+            button.classList.add("correct");
+        }
+    });
+
+    mostrarExplicacao(resultado);
 
     // Ativa a exibição suave adicionando as classes de animação do CSS
     feedbackContainer.style.display = "block";
@@ -240,39 +240,49 @@ function selectAnswer(e) {
         feedbackContainer.classList.add("mostrar");
     }, 10);
 
-    Array.from(answerButtons.children).forEach(button => {
-        if (button.dataset.correct === "true") {
-            button.classList.add("correct");
-        }
-        button.disabled = true;
-    });
-
-    scoreElement.innerHTML = `pontos: ${score * 1000}`;
+    scoreElement.textContent = `pontos: ${score * pontosPorAcerto}`;
     nextButton.style.display = "inline-block";
+    ocupado = false;
 }
 
-function showScore() {
+async function showScore() {
+    ocupado = true;
     resetState();
-    feedbackContainer.classList.add(score >= quiz.length / 2 ? "correct" : "incorrect");
-    questionElement.innerHTML = "Quiz Concluído!";
-    
-    feedbackTitle.innerHTML = "FIM DE JOGO!";
-    feedbackSubtitle.innerHTML = `Você acertou ${score} de ${quiz.length} perguntas (${score * 1000} pontos)!`;
-    
+    questionElement.textContent = "Salvando resultado...";
+    let resultado;
+    try {
+        resultado = await api(`/jogos/${idQuiz}/finalizar`, { method: 'POST', body: JSON.stringify({ respostas: respostasRodada }) });
+        resultadoSalvo = true;
+    } catch (erro) {
+        questionElement.textContent = `${erro.message} Tente salvar novamente para entrar no ranking.`;
+        nextButton.textContent = "Tentar salvar novamente";
+        nextButton.style.display = "inline-block";
+        ocupado = false;
+        return;
+    }
+    feedbackContainer.classList.add(score >= codigosRodada.length / 2 ? "correct" : "incorrect");
+    questionElement.textContent = "Quiz Concluído!";
+
+    feedbackTitle.textContent = "FIM DE JOGO!";
+    feedbackSubtitle.textContent = `Você acertou ${score} de ${codigosRodada.length} perguntas (${resultado.pontos} pontos)! Resultado salvo no ranking.`;
+    scoreElement.textContent = `pontos: ${resultado.pontos}`;
+
     feedbackContainer.style.display = "block";
     setTimeout(() => {
         feedbackContainer.classList.add("mostrar");
     }, 10);
-    
+
     nextButton.innerHTML = "Jogar Novamente";
     nextButton.style.display = "inline-block";
-    botaoRaking.innerHTML = "Raking Global";
+    botaoRaking.innerHTML = "Ranking Global";
     botaoRaking.style.display = "inline-block";
+    botaoCategorias.style.display = "inline-block";
+    ocupado = false;
 }
 
 function handleNextButton() {
     currentQuestionIndex++;
-    if (currentQuestionIndex < quiz.length) {
+    if (currentQuestionIndex < codigosRodada.length) {
         showQuestion();
     } else {
         showScore();
@@ -280,8 +290,11 @@ function handleNextButton() {
 }
 
 nextButton.addEventListener("click", () => {
-    if (currentQuestionIndex < quiz.length) {
+    if (ocupado) return;
+    if (currentQuestionIndex < codigosRodada.length) {
         handleNextButton();
+    } else if (!resultadoSalvo) {
+        showScore();
     } else {
         startQuiz();
     }
@@ -292,11 +305,15 @@ botaoRaking.addEventListener("click", function(evento){
 
     botaoRaking.innerText = "Proximo...";
     botaoRaking.style.opacity = "0.7";
-    botaoRaking.style.cursor = "not_allowed";
+    botaoRaking.style.cursor = "not-allowed";
 
     setTimeout(() => {
         window.location.href = "./raking/raking.html";
     }, 2000);
+});
+
+botaoCategorias.addEventListener("click", () => {
+    window.location.href = "./categorias/categoria.html";
 });
 
 

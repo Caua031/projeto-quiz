@@ -3,6 +3,7 @@
 // ================================
 const canvas = document.getElementById("background");
 const ctx = canvas.getContext("2d");
+const acess = window.Acessibilidade || { animacoes: () => true, aoMudar() {} };
 
 let largura = 0;
 let altura = 0;
@@ -113,6 +114,7 @@ function desenhar() {
 // ANIMAÇÃO CONTÍNUA
 // ================================
 function animar() {
+    if (!acess.animacoes()) { animationId = null; return; } // desligado: para o loop
     for (const particula of particulas) {
         atualizarParticula(particula);
     }
@@ -130,6 +132,7 @@ function iniciarAnimacao() {
         cancelAnimationFrame(animationId);
     }
 
+    if (!acess.animacoes()) { animationId = null; desenhar(); return; } // quadro parado
     animar();
 }
 
@@ -138,7 +141,10 @@ function iniciarAnimacao() {
 // ================================
 window.addEventListener("resize", () => {
     redimensionar();
+    if (!acess.animacoes()) desenhar();
 });
+
+acess.aoMudar(() => iniciarAnimacao());
 
 // ================================
 // INICIALIZAÇÃO

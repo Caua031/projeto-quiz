@@ -11,7 +11,8 @@ const VELOCIDADE = [40, 110];  // queda em px por segundo
 const PROPORCAO_CONFETE = 0.35; // 0 = só ícones, 1 = só confete
 // ===================
 
-const reduzMovimento = false; // use matchMedia aqui se for publicar
+const acess = window.Acessibilidade || { animacoes: () => true, aoMudar() {} };
+let reduzMovimento = !acess.animacoes(); // controlado pela aba de acessibilidade
 const rand = (min, max) => Math.random() * (max - min) + min;
 const sorteia = (lista) => lista[Math.floor(Math.random() * lista.length)];
 
@@ -109,7 +110,15 @@ function redimensionar() {
 }
 
 let ultimo = 0;
+let rodando = false;
+function iniciarLoop() {
+    if (rodando) return;
+    rodando = true;
+    requestAnimationFrame(loop);
+}
+
 function loop(t) {
+    if (reduzMovimento) { rodando = false; return; } // animações desligadas: para o loop
     const dt = Math.min((t - ultimo) / 1000, 0.1) || 0;
     ultimo = t;
     quadro(dt);
@@ -123,4 +132,9 @@ window.addEventListener("resize", () => {
 });
 
 redimensionar();
-requestAnimationFrame(loop);
+iniciarLoop();
+
+acess.aoMudar(ligado => {
+    reduzMovimento = !ligado;
+    if (ligado) { ultimo = 0; iniciarLoop(); } else quadro(0); // desligado: deixa um quadro parado
+});

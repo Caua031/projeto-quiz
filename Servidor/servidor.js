@@ -5,6 +5,7 @@ const pool = require('./db');
 const auth = require('./autenticacao');
 
 const app = express();
+app.set('trust proxy', 1);
 const PORTA = Number(process.env.PORT || 3000);
 
 // Pasta do front-end. Por padrão fica ao lado da pasta Servidor (../PROJETO);

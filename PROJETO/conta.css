@@ -1,5 +1,121 @@
-.conta-barra { position: relative; z-index: 2; display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 12px; padding: 12px 20px; color: #fff; background: #102431; font: 14px Arial, sans-serif; width: 100%; }
-.conta-barra span { margin-right: auto; overflow-wrap: anywhere; }
-.conta-barra a { color: #e1f4ff; }
-.conta-barra button { cursor: pointer; border: 1px solid #b5d3e2; border-radius: 7px; padding: 7px 14px; background: transparent; color: white; font: inherit; }
-.conta-barra :focus-visible { outline: 3px solid #8ad0ff; outline-offset: 3px; }
+@import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
+
+/* Barra da conta (nome, Ranking, Administração, Sair).
+   Criada em api.js, na função mostrarConta(). */
+.conta-barra {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 10px 18px;
+  color: #fff;
+  background: rgba(18, 38, 50, 0.88);
+  border: 1px solid rgba(174, 223, 242, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 0 18px rgba(40, 158, 255, 0.18);
+  backdrop-filter: blur(6px);
+  font-family: var(--fonte-principal, Georgia, serif);
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Nome do usuário */
+.conta-barra span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+  font-family: var(--font-secundaria, cursive);
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-transform: none;
+  overflow-wrap: anywhere;
+}
+
+.conta-barra span::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #5eead4;
+  box-shadow: 0 0 8px rgba(94, 234, 212, 0.8);
+}
+
+/* Links: Ranking e Administração */
+.conta-barra a {
+  padding: 6px 14px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  color: #e1f4ff;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.conta-barra a:hover {
+  color: #fff;
+  background: rgba(40, 158, 255, 0.18);
+  border-color: rgba(174, 223, 242, 0.4);
+}
+
+/* Botão Sair */
+.conta-barra button {
+  cursor: pointer;
+  padding: 6px 18px;
+  border: 1px solid rgba(174, 223, 242, 0.5);
+  border-radius: 20px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.conta-barra button:hover:not(:disabled) {
+  background: #dc3545;
+  border-color: #dc3545;
+}
+
+.conta-barra button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.conta-barra :focus-visible {
+  outline: 3px solid #8ad0ff;
+  outline-offset: 3px;
+}
+
+/* Telas pequenas: nome em cima, links embaixo */
+@media (max-width: 600px) {
+  .conta-barra {
+    justify-content: center;
+  }
+
+  .conta-barra span {
+    flex-basis: 100%;
+    justify-content: center;
+    margin-right: 0;
+  }
+}
+
+/* Versão mínima: só o botão Sair, sem a barra (tela do quiz) */
+.conta-barra.conta-barra-minima {
+  margin-bottom: 0;
+  padding: 10px 16px 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.conta-barra.conta-barra-minima button {
+  background: rgba(18, 38, 50, 0.6);
+}

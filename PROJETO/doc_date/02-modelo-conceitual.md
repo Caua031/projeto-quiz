@@ -1,3 +1,5 @@
+<img width="2200" height="2550" alt="modelo logico DER" src="https://github.com/user-attachments/assets/370bfca4-332e-4f50-8785-e66f994cdd42" />
+<img width="2200" height="1700" alt="MER" src="https://github.com/user-attachments/assets/2be37091-f3d9-45f8-a73a-2a528cce61f4" />
 
 Marco M1. A entrega deste passo Ã© o modelo conceitual: o desenho em `entregas/02-conceitual.pdf` (ou `.png`) e as tabelas abaixo.
 
@@ -46,6 +48,8 @@ O diagrama e esta tabela descrevem o mesmo modelo. Toda entidade do desenho estÃ
 
 MER ->
 
+<img width="2200" height="1700" alt="MER" src="https://github.com/user-attachments/assets/cb5b432c-3dd8-47d1-9259-65cad9c3d6c5" />
 
 DER ->
 
+<img width="2200" height="2550" alt="modelo logico DER" src="https://github.com/user-attachments/assets/684f4b75-4810-46a6-9755-5ef189ca9879" />

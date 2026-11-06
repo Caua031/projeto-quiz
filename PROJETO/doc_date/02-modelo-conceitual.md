@@ -1,6 +1,3 @@
-<img width="2200" height="2550" alt="modelo logico DER" src="https://github.com/user-attachments/assets/370bfca4-332e-4f50-8785-e66f994cdd42" />
-<img width="2200" height="1700" alt="MER" src="https://github.com/user-attachments/assets/2be37091-f3d9-45f8-a73a-2a528cce61f4" />
-
 Marco M1. A entrega deste passo é o modelo conceitual: o desenho em `entregas/02-conceitual.pdf` (ou `.png`) e as tabelas abaixo.
 
 É um DER na notação de Chen, no brModelo ou no Visual Paradigm Online. Entidades, atributos, relacionamentos e cardinalidades. Ainda não aparecem tabela, chave estrangeira nem tipo de coluna: isso é o modelo lógico, no passo 5.
